@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide any "Made in Bolt" badges or similar branding */
+[data-bolt-badge],
+.bolt-badge,
+.made-in-bolt,
+[class*="bolt-badge"],
+[class*="made-in-bolt"],
+iframe[src*="bolt"],
+div[class*="watermark"],
+div[class*="branding"],
+.watermark,
+.branding {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hide any fixed positioned badges that might appear */
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="top"] {
+  display: none !important;
+}
+
+/* Additional selectors for common badge patterns */
+a[href*="bolt.new"],
+a[href*="stackblitz"],
+[data-testid*="badge"],
+[data-testid*="watermark"] {
+  display: none !important;
+  visibility: hidden !important;
+}
