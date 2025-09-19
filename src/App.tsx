@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import Header from './components/Header';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -17,6 +18,23 @@ import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, log
 
 type AuthState = 'login' | 'register' | 'authenticated';
 
+function ErrorFallback({error, resetErrorBoundary}: {error: Error, resetErrorBoundary: () => void}) {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-white flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+        <h2 className="text-2xl font-bold text-red-600 mb-4">Something went wrong</h2>
+        <p className="text-gray-600 mb-4">We're sorry, but something unexpected happened.</p>
+        <button
+          onClick={resetErrorBoundary}
+          className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors"
+        >
+          Try again
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [authState, setAuthState] = useState<AuthState>('login');
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
@@ -32,13 +50,18 @@ function App() {
   });
 
   useEffect(() => {
-    const data = loadCurrentUser();
-    if (data.profile) {
-      setUserProfile(data.profile);
-      setAuthState('authenticated');
-    }
-    if (data.progress) {
-      setGameProgress(data.progress);
+    try {
+      const data = loadCurrentUser();
+      if (data.profile) {
+        setUserProfile(data.profile);
+        setAuthState('authenticated');
+      }
+      if (data.progress) {
+        setGameProgress(data.progress);
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+      // Continue with default state
     }
   }, []);
 
@@ -111,93 +134,95 @@ function App() {
 
   // Show main app (authenticated)
   return (
-    <Router>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-        <Header userProfile={userProfile} onLogout={handleLogout} />
-        <main className="container mx-auto px-4 py-8">
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                <Dashboard 
-                  userProfile={userProfile} 
-                  gameProgress={gameProgress}
-                />
-              } 
-            />
-            <Route 
-              path="/learning" 
-              element={<LearningHub />} 
-            />
-            <Route 
-              path="/game/:levelId" 
-              element={
-                <GameLevel 
-                  gameProgress={gameProgress}
-                  onProgressUpdate={updateProgress}
-                />
-              } 
-            />
-            <Route 
-              path="/lesson/:topicId" 
-              element={<LessonView />} 
-            />
-            <Route 
-              path="/pre-test" 
-              element={
-                <PreTest 
-                  onTestComplete={(score) =>
-                    updateProgress({
-                      ...gameProgress,
-                      preTestCompleted: true,
-                      preTestScore: score,
-                      preTestTrials: gameProgress.preTestTrials + 1
-                    })
-                  }
-                />
-              } 
-            />
-            <Route 
-              path="/post-test" 
-              element={
-                <PostTest 
-                  onTestComplete={(score) =>
-                    updateProgress({
-                      ...gameProgress,
-                      postTestCompleted: true,
-                      postTestScore: score,
-                      postTestTrials: gameProgress.postTestTrials + 1
-                    })
-                  }
-                />
-              } 
-            />
-            <Route 
-              path="/certificate/:type" 
-              element={<Certificate userProfile={userProfile} />} 
-            />
-            <Route 
-              path="/certificates" 
-              element={
-                <CertificateMenu 
-                  userProfile={userProfile}
-                  gameProgress={gameProgress}
-                />
-              } 
-            />
-            <Route 
-              path="/progress" 
-              element={
-                <ProgressStats 
-                  userProfile={userProfile}
-                  gameProgress={gameProgress}
-                />
-              } 
-            />
-          </Routes>
-        </main>
-      </div>
-    </Router>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Router>
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
+          <Header userProfile={userProfile} onLogout={handleLogout} />
+          <main className="container mx-auto px-4 py-8">
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  <Dashboard 
+                    userProfile={userProfile} 
+                    gameProgress={gameProgress}
+                  />
+                } 
+              />
+              <Route 
+                path="/learning" 
+                element={<LearningHub />} 
+              />
+              <Route 
+                path="/game/:levelId" 
+                element={
+                  <GameLevel 
+                    gameProgress={gameProgress}
+                    onProgressUpdate={updateProgress}
+                  />
+                } 
+              />
+              <Route 
+                path="/lesson/:topicId" 
+                element={<LessonView />} 
+              />
+              <Route 
+                path="/pre-test" 
+                element={
+                  <PreTest 
+                    onTestComplete={(score) =>
+                      updateProgress({
+                        ...gameProgress,
+                        preTestCompleted: true,
+                        preTestScore: score,
+                        preTestTrials: gameProgress.preTestTrials + 1
+                      })
+                    }
+                  />
+                } 
+              />
+              <Route 
+                path="/post-test" 
+                element={
+                  <PostTest 
+                    onTestComplete={(score) =>
+                      updateProgress({
+                        ...gameProgress,
+                        postTestCompleted: true,
+                        postTestScore: score,
+                        postTestTrials: gameProgress.postTestTrials + 1
+                      })
+                    }
+                  />
+                } 
+              />
+              <Route 
+                path="/certificate/:type" 
+                element={<Certificate userProfile={userProfile} />} 
+              />
+              <Route 
+                path="/certificates" 
+                element={
+                  <CertificateMenu 
+                    userProfile={userProfile}
+                    gameProgress={gameProgress}
+                  />
+                } 
+              />
+              <Route 
+                path="/progress" 
+                element={
+                  <ProgressStats 
+                    userProfile={userProfile}
+                    gameProgress={gameProgress}
+                  />
+                } 
+              />
+            </Routes>
+          </main>
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
