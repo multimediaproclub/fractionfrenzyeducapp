@@ -178,23 +178,101 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
 
   const shareCertificate = async (certificate: CertificateData) => {
     const shareText = `I've earned a ${certificate.title} from FractionMaster! 🎉`;
+    const shareUrl = window.location.href;
     
-    if (navigator.share) {
+    // Create share options modal
+    const shareOptions = [
+      {
+        name: 'Email',
+        action: () => {
+          const subject = encodeURIComponent(`${userProfile.name} - ${certificate.title}`);
+          const body = encodeURIComponent(`${shareText}\n\nView my certificate: ${shareUrl}`);
+          window.open(`mailto:?subject=${subject}&body=${body}`);
+        }
+      },
+      {
+        name: 'Facebook',
+        action: () => {
+          const url = encodeURIComponent(shareUrl);
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+      },
+      {
+        name: 'Twitter',
+        action: () => {
+          const text = encodeURIComponent(shareText);
+          const url = encodeURIComponent(shareUrl);
+          window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+      },
+      {
+        name: 'WhatsApp',
+        action: () => {
+          const text = encodeURIComponent(`${shareText} ${shareUrl}`);
+          window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+      },
+      {
+        name: 'Copy Link',
+        action: () => {
+          navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+          alert('Certificate link copied to clipboard!');
+        }
+      }
+    ];
+    
+    // Try native share first on mobile
+    if (navigator.share && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       try {
         await navigator.share({
           title: certificate.title,
           text: shareText,
-          url: window.location.href,
+          url: shareUrl,
         });
+        return;
       } catch (error) {
-        // User cancelled or permission denied - fallback to clipboard
-        navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
-        alert('Certificate link copied to clipboard!');
+        // Fall through to custom share options
       }
-    } else {
-      navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
-      alert('Certificate link copied to clipboard!');
     }
+    
+    // Show custom share modal
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
+    modal.innerHTML = `
+      <div class="bg-white rounded-2xl p-6 max-w-sm w-full">
+        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Share Certificate</h3>
+        <div class="space-y-3">
+          ${shareOptions.map((option, index) => `
+            <button class="share-option w-full p-3 text-left bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors" data-index="${index}">
+              <span class="font-semibold text-gray-800">${option.name}</span>
+            </button>
+          `).join('')}
+        </div>
+        <button class="close-modal w-full mt-4 p-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+          Cancel
+        </button>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Add event listeners
+    modal.querySelectorAll('.share-option').forEach((button, index) => {
+      button.addEventListener('click', () => {
+        shareOptions[index].action();
+        document.body.removeChild(modal);
+      });
+    });
+    
+    modal.querySelector('.close-modal')?.addEventListener('click', () => {
+      document.body.removeChild(modal);
+    });
+    
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        document.body.removeChild(modal);
+      }
+    });
   };
 
   if (earnedCertificates.length === 0) {
