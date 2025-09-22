@@ -137,11 +137,13 @@ export const loadCurrentUser = (): { profile: UserProfile | null; progress: Game
   try {
     // Only load if caching is active
     if (!isCachingActive()) {
+      console.log('Caching not active, returning default state');
       return { profile: null, progress: getDefaultProgress() };
     }
     
     const currentUsername = localStorage.getItem(CURRENT_USER_KEY);
     if (!currentUsername) {
+      console.log('No current username found');
       return { profile: null, progress: getDefaultProgress() };
     }
     
@@ -149,12 +151,14 @@ export const loadCurrentUser = (): { profile: UserProfile | null; progress: Game
     const account = accounts.find(acc => acc.username === currentUsername);
     
     if (account) {
+      console.log('Found existing user account:', currentUsername);
       return {
         profile: account.profile,
         progress: account.progress
       };
     }
     
+    console.log('No account found for username:', currentUsername);
     return { profile: null, progress: getDefaultProgress() };
   } catch (error) {
     console.error('Error loading current user:', error);

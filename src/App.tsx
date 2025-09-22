@@ -18,6 +18,21 @@ import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, log
 
 type AuthState = 'login' | 'register' | 'authenticated';
 
+// Loading component
+function LoadingScreen() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+          <span className="text-white font-bold text-2xl">F</span>
+        </div>
+        <h2 className="text-xl font-semibold text-gray-700 mb-2">FractionMaster</h2>
+        <p className="text-gray-500">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
 function ErrorFallback({error, resetErrorBoundary}: {error: Error, resetErrorBoundary: () => void}) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-white flex items-center justify-center p-4">
@@ -36,6 +51,7 @@ function ErrorFallback({error, resetErrorBoundary}: {error: Error, resetErrorBou
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [authState, setAuthState] = useState<AuthState>('login');
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [gameProgress, setGameProgress] = useState<GameProgress>({
@@ -50,23 +66,36 @@ function App() {
   });
 
   useEffect(() => {
-    // Clear all cache on fresh app startup
-    clearAllCache();
-    console.log('App started - cache cleared');
-    
-    try {
-      const data = loadCurrentUser();
-      if (data.profile) {
-        setUserProfile(data.profile);
-        setAuthState('authenticated');
+    const initializeApp = async () => {
+      try {
+        // Clear all cache on fresh app startup
+        clearAllCache();
+        console.log('App started - cache cleared');
+        
+        // Add a small delay to ensure DOM is ready
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Try to load existing user data
+        const data = loadCurrentUser();
+        if (data.profile) {
+          setUserProfile(data.profile);
+          setGameProgress(data.progress);
+          setAuthState('authenticated');
+        } else {
+          // No existing user, show login
+          setAuthState('login');
+        }
+      } catch (error) {
+        console.error('Error initializing app:', error);
+        // On error, default to login screen
+        setAuthState('login');
+      } finally {
+        // Always set loading to false
+        setIsLoading(false);
       }
-      if (data.progress) {
-        setGameProgress(data.progress);
-      }
-    } catch (error) {
-      console.error('Error loading user data:', error);
-      // Continue with default state
-    }
+    };
+
+    initializeApp();
   }, []);
 
   const updateProgress = (newProgress: GameProgress) => {
@@ -115,6 +144,11 @@ function App() {
     });
     setAuthState('login');
   };
+
+  // Show loading screen while initializing
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   // Show login screen
   if (authState === 'login') {
