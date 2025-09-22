@@ -306,12 +306,7 @@ const GameLevel: React.FC<GameLevelProps> = ({ gameProgress, onProgressUpdate })
                   : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-blue-300 hover:bg-blue-50'
               }`}
             >
-              <div className="flex items-center space-x-3">
-                <span className="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                  {String.fromCharCode(65 + index)}
-                </span>
-                <span>{option}</span>
-              </div>
+              {option}
             </button>
           ))}
         </div>
