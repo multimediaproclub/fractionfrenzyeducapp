@@ -32,138 +32,41 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ userProfile, gameProgress
 
   const shareProgress = async () => {
     const shareText = `I'm ${Math.round(getProgressPercentage())}% through FractionMaster with ${totalStars} stars earned! 🌟`;
-    const shareUrl = window.location.href;
     
-    // Create share options modal
-    const shareOptions = [
-      {
-        name: 'Email',
-        action: () => {
-          const subject = encodeURIComponent(`${userProfile.name} - FractionMaster Progress`);
-          const body = encodeURIComponent(`${shareText}\n\nView my progress: ${shareUrl}`);
-          window.open(`mailto:?subject=${subject}&body=${body}`);
-        }
-      },
-      {
-        name: 'Facebook',
-        action: () => {
-          const url = encodeURIComponent(shareUrl);
-          window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-        }
-      },
-      {
-        name: 'Twitter',
-        action: () => {
-          const text = encodeURIComponent(shareText);
-          const url = encodeURIComponent(shareUrl);
-          window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-        }
-      },
-      {
-        name: 'WhatsApp',
-        action: () => {
-          const text = encodeURIComponent(`${shareText} ${shareUrl}`);
-          window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
-      },
-      {
-        name: 'Copy Link',
-        action: () => {
-          navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
-          alert('Progress link copied to clipboard!');
-        }
-      }
-    ];
-    
-    // Try native share first on mobile
-    if (navigator.share && /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (navigator.share) {
       try {
         await navigator.share({
           title: 'My FractionMaster Progress',
           text: shareText,
-          url: shareUrl,
+          url: window.location.href,
         });
-        return;
       } catch (error) {
-        // Fall through to custom share options
+        // User cancelled or permission denied - fallback to clipboard
+        navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
+        alert('Progress shared! Link copied to clipboard.');
       }
+    } else {
+      navigator.clipboard.writeText(`${shareText} ${window.location.href}`);
+      alert('Progress shared! Link copied to clipboard.');
     }
-    
-    // Show custom share modal
-    const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
-    modal.innerHTML = `
-      <div class="bg-white rounded-2xl p-6 max-w-sm w-full">
-        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Share Progress</h3>
-        <div class="space-y-3">
-          ${shareOptions.map((option, index) => `
-            <button class="share-option w-full p-3 text-left bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors" data-index="${index}">
-              <span class="font-semibold text-gray-800">${option.name}</span>
-            </button>
-          `).join('')}
-        </div>
-        <button class="close-modal w-full mt-4 p-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
-          Cancel
-        </button>
-      </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Add event listeners
-    modal.querySelectorAll('.share-option').forEach((button, index) => {
-      button.addEventListener('click', () => {
-        shareOptions[index].action();
-        document.body.removeChild(modal);
-      });
-    });
-    
-    modal.querySelector('.close-modal')?.addEventListener('click', () => {
-      document.body.removeChild(modal);
-    });
-    
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        document.body.removeChild(modal);
-      }
-    });
   };
 
   const takeScreenshot = async () => {
     try {
       const element = document.querySelector('.progress-stats-container') as HTMLElement;
       if (element) {
-        // Temporarily hide action buttons for cleaner screenshot
-        const actionButtons = element.querySelector('.flex.justify-center.space-x-4') as HTMLElement;
-        const originalDisplay = actionButtons?.style.display;
-        if (actionButtons) {
-          actionButtons.style.display = 'none';
-        }
-        
         const canvas = await html2canvas(element, {
           backgroundColor: '#ffffff',
           scale: 2,
           logging: false,
-          useCORS: true,
-          allowTaint: true,
-          foreignObjectRendering: true
+          useCORS: true
         });
         
-        // Restore action buttons
-        if (actionButtons && originalDisplay !== undefined) {
-          actionButtons.style.display = originalDisplay;
-        }
-        
-        // Convert to JPG and download
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const link = document.createElement('a');
-            link.download = `FractionMaster_Progress_${userProfile.name.replace(/\s+/g, '_')}.jpg`;
-            link.href = URL.createObjectURL(blob);
-            link.click();
-            URL.revokeObjectURL(link.href);
-          }
-        }, 'image/jpeg', 0.95);
+        // Create download link
+        const link = document.createElement('a');
+        link.download = `FractionMaster_Progress_${userProfile.name.replace(/\s+/g, '_')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
       }
     } catch (error) {
       console.error('Error taking screenshot:', error);
