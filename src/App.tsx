@@ -14,7 +14,7 @@ import Certificate from './components/Certificate';
 import CertificateMenu from './components/CertificateMenu';
 import ProgressStats from './components/ProgressStats';
 import { UserProfile, GameProgress } from './types';
-import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists } from './utils/storage';
+import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists, clearAllCache } from './utils/storage';
 
 type AuthState = 'login' | 'register' | 'authenticated';
 
@@ -50,6 +50,10 @@ function App() {
   });
 
   useEffect(() => {
+    // Clear all cache on fresh app startup
+    clearAllCache();
+    console.log('App started - cache cleared');
+    
     try {
       const data = loadCurrentUser();
       if (data.profile) {
