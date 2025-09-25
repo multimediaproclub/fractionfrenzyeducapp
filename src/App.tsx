@@ -13,7 +13,7 @@ import Certificate from './components/Certificate';
 import CertificateMenu from './components/CertificateMenu';
 import ProgressStats from './components/ProgressStats';
 import { UserProfile, GameProgress } from './types';
-import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists } from './utils/storage';
+import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists, clearAllCache } from './utils/storage';
 
 type AuthState = 'login' | 'register' | 'authenticated';
 
@@ -30,16 +30,36 @@ function App() {
     postTestTrials: 0,
     totalStars: 0
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const data = loadCurrentUser();
-    if (data.profile) {
-      setUserProfile(data.profile);
-      setAuthState('authenticated');
-    }
-    if (data.progress) {
-      setGameProgress(data.progress);
-    }
+    const initializeApp = async () => {
+      try {
+        // Clear cache on fresh startup
+        clearAllCache();
+        
+        // Small delay to ensure DOM is ready
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Try to load current user (will return null since cache is cleared)
+        const data = loadCurrentUser();
+        if (data.profile) {
+          setUserProfile(data.profile);
+          setAuthState('authenticated');
+        }
+        if (data.progress) {
+          setGameProgress(data.progress);
+        }
+      } catch (error) {
+        console.error('Error initializing app:', error);
+        // Ensure we always show login screen on error
+        setAuthState('login');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeApp();
   }, []);
 
   const updateProgress = (newProgress: GameProgress) => {
@@ -88,6 +108,21 @@ function App() {
     });
     setAuthState('login');
   };
+
+  // Loading screen
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <span className="text-white font-bold text-2xl">F</span>
+          </div>
+          <h1 className="text-2xl font-bold text-blue-900 mb-2">FractionMaster</h1>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Show login screen
   if (authState === 'login') {
