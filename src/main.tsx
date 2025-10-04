@@ -2,14 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { clearAllCache } from './utils/storage';
-
-// Clear cache on app startup (non-blocking)
-try {
-  clearAllCache();
-} catch (error) {
-  console.error('Error clearing cache on startup:', error);
-}
 
 const rootElement = document.getElementById('root');
 

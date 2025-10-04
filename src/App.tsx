@@ -13,7 +13,7 @@ import Certificate from './components/Certificate';
 import CertificateMenu from './components/CertificateMenu';
 import ProgressStats from './components/ProgressStats';
 import { UserProfile, GameProgress } from './types';
-import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists, clearAllCache } from './utils/storage';
+import { loadCurrentUser, saveUserAccount, authenticateUser, updateUserData, logoutUser, userExists, clearSessionCache } from './utils/storage';
 
 type AuthState = 'login' | 'register' | 'authenticated';
 
@@ -35,13 +35,13 @@ function App() {
   useEffect(() => {
     const initializeApp = async () => {
       try {
-        // Clear cache on fresh startup
-        clearAllCache();
+        // Clear only session cache on startup, preserve accounts
+        clearSessionCache();
         
         // Small delay to ensure DOM is ready
         await new Promise(resolve => setTimeout(resolve, 100));
         
-        // Try to load current user (will return null since cache is cleared)
+        // Try to load current user
         const data = loadCurrentUser();
         if (data.profile) {
           setUserProfile(data.profile);
