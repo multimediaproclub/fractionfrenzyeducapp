@@ -201,7 +201,18 @@ const GameLevel: React.FC<GameLevelProps> = ({ gameProgress, onProgressUpdate })
         
         <div className="space-y-4">
           <button
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              setCurrentQuestionIndex(0);
+              setSelectedAnswer(null);
+              setShowResult(false);
+              setScore(0);
+              setTimeLeft(60);
+              setHintsUsed(0);
+              setSkipsUsed(0);
+              setShowHint(false);
+              setIsLevelComplete(false);
+              setCorrectAnswers([]);
+            }}
             className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors"
           >
             Try Again
