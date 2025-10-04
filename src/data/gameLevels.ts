@@ -97,7 +97,7 @@ export const gameLevels: GameLevel[] = [
         id: 'add-dis-4',
         question: 'What is 1/5 + 2/10?',
         options: ['3/15', '2/5', '4/10', '3/10'],
-        correctAnswer: 2,
+        correctAnswer: 1,
         explanation: 'Common denominator is 10: 1/5 = 2/10, then 2/10 + 2/10 = 4/10 = 2/5',
         difficulty: 'medium',
         visualFraction: { numerator: 4, denominator: 10 }
