@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FractionMaster - Complete Software Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            font-size: 11pt;
+        }
+        
+        .document {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            background: white;
+            min-height: 11in;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            border-bottom: 3px solid #2563EB;
+        }
+        
+        .header h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 0.5em;
+        }
+        
+        .header .subtitle {
+            font-size: 16pt;
+            color: #374151;
+            margin-bottom: 0.5em;
+        }
+        
+        .header .version {
+            font-size: 12pt;
+            color: #6B7280;
+        }
+        
+        .toc {
+            page-break-after: always;
+            margin-bottom: 2em;
+        }
+        
+        .toc h2 {
+            font-size: 16pt;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 1em;
+            border-bottom: 2px solid #E5E7EB;
+            padding-bottom: 0.5em;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            padding: 0.3em 0;
+            border-bottom: 1px dotted #D1D5DB;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .toc a {
+            color: #2563EB;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .section {
+            margin-bottom: 2em;
+            page-break-inside: avoid;
+        }
+        
+        .section h1 {
+            font-size: 18pt;
+            font-weight: 700;
+            color: #1E40AF;
+            margin: 1.5em 0 1em 0;
+            padding-bottom: 0.5em;
+            border-bottom: 2px solid #2563EB;
+            page-break-after: avoid;
+        }
+        
+        .section h2 {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #374151;
+            margin: 1.2em 0 0.8em 0;
+            page-break-after: avoid;
+        }
+        
+        .section h3 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #4B5563;
+            margin: 1em 0 0.5em 0;
+            page-break-after: avoid;
+        }
+        
+        .section p {
+            margin-bottom: 0.8em;
+            text-align: justify;
+            text-indent: 0;
+        }
+        
+        .section ul, .section ol {
+            margin: 0.8em 0 0.8em 1.5em;
+        }
+        
+        .section li {
+            margin-bottom: 0.4em;
+        }
+        
+        .code-block {
+            background: #F3F4F6;
+            border: 1px solid #D1D5DB;
+            border-left: 4px solid #2563EB;
+            padding: 1em;
+            margin: 1em 0;
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+            white-space: pre-wrap;
+            page-break-inside: avoid;
+        }
+        
+        .diagram {
+            background: #F9FAFB;
+            border: 2px solid #E5E7EB;
+            padding: 1.5em;
+            margin: 1.5em 0;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            white-space: pre-line;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+        
+        .feature-grid {
+            display: table;
+            width: 100%;
+            margin: 1em 0;
+        }
+        
+        .feature-row {
+            display: table-row;
+        }
+        
+        .feature-card {
+            display: table-cell;
+            width: 48%;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 1em;
+            margin: 0.5em;
+            vertical-align: top;
+        }
+        
+        .feature-card h4 {
+            color: #2563EB;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+        
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+        
+        .stats-table th,
+        .stats-table td {
+            border: 1px solid #D1D5DB;
+            padding: 0.8em;
+            text-align: left;
+        }
+        
+        .stats-table th {
+            background: #F3F4F6;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .highlight {
+            background: #FEF3C7;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+        
+        .important {
+            background: #FEE2E2;
+            border: 1px solid #FECACA;
+            padding: 1em;
+            margin: 1em 0;
+            border-left: 4px solid #EF4444;
+        }
+        
+        .note {
+            background: #EFF6FF;
+            border: 1px solid #DBEAFE;
+            padding: 1em;
+            margin: 1em 0;
+            border-left: 4px solid #3B82F6;
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 2em 0;
+            padding: 2em;
+            background: #F0F9FF;
+            border: 2px solid #0EA5E9;
+            border-radius: 8px;
+        }
+        
+        .download-btn {
+            background: #2563EB;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12pt;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background: #1D4ED8;
+        }
+        
+        @media print {
+            .download-section { display: none; }
+            .section { page-break-inside: avoid; }
+        }
+        
+        @page {
+            margin: 1in;
+            size: letter;
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- Header -->
+        <div class="header">
+            <h1>🧮 FractionMaster</h1>
+            <div class="subtitle">Complete Software Documentation</div>
+            <div class="subtitle">Software Development Life Cycle (SDLC) Format</div>
+            <div class="version">Version 1.0 | December 2024</div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2>📄 Download Documentation</h2>
+            <p>Click the button below to download this documentation as an editable Word document (.docx format)</p>
+            <button class="download-btn" onclick="downloadAsWord()">📥 Download as Word Document</button>
+            <button class="download-btn" onclick="window.print()">🖨️ Print Document</button>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#overview">1. Project Overview</a><span>Page 3</span></li>
+                <li><a href="#requirements">2. Requirements Analysis</a><span>Page 5</span></li>
+                <li><a href="#design">3. System Design</a><span>Page 8</span></li>
+                <li><a href="#architecture">4. Architecture & Technical Specifications</a><span>Page 11</span></li>
+                <li><a href="#implementation">5. Implementation Details</a><span>Page 14</span></li>
+                <li><a href="#testing">6. Testing Strategy</a><span>Page 17</span></li>
+                <li><a href="#deployment">7. Deployment Guide</a><span>Page 19</span></li>
+                <li><a href="#maintenance">8. Maintenance & Support</a><span>Page 21</span></li>
+                <li><a href="#visual-maps">9. Visual System Maps</a><span>Page 23</span></li>
+                <li><a href="#technical-ref">10. Technical Reference</a><span>Page 26</span></li>
+            </ul>
+        </div>
+
+        <!-- 1. Project Overview -->
+        <div class="section" id="overview">
+            <h1>1. 📊 Project Overview</h1>
+            
+            <h2>1.1 Project Information</h2>
+            <table class="stats-table">
+                <tr><th>Project Name</th><td>FractionMaster - Interactive Fraction Learning Platform</td></tr>
+                <tr><th>Version</th><td>1.0.0</td></tr>
+                <tr><th>Development Period</th><td>2024-2025</td></tr>
+                <tr><th>Platform</th><td>Web Application (PWA)</td></tr>
+                <tr><th>Target Audience</th><td>Students (Grades 5-8)</td></tr>
+                <tr><th>Technology Stack</th><td>React 18.3.1, TypeScript 5.5.3, Tailwind CSS</td></tr>
+            </table>
+
+            <h2>1.2 Project Scope</h2>
+            <p>FractionMaster is a comprehensive educational web application designed to teach fraction operations through interactive games, lessons, and assessments. The platform provides a complete learning journey from basic fraction concepts to advanced operations including addition, subtraction, multiplication, and division of fractions.</p>
+
+            <h2>1.3 Key Objectives</h2>
+            <ul>
+                <li><strong>Educational Goal:</strong> Improve student understanding of fraction operations through interactive learning</li>
+                <li><strong>Engagement:</strong> Gamified learning experience with rewards, stars, and certificates</li>
+                <li><strong>Assessment:</strong> Pre/post testing to measure learning progress and improvement</li>
+                <li><strong>Accessibility:</strong> Responsive design for various devices and screen sizes</li>
+                <li><strong>Progress Tracking:</strong> Comprehensive analytics and progress monitoring</li>
+            </ul>
+
+            <h2>1.4 Core Features</h2>
+            <div class="feature-grid">
+                <div class="feature-row">
+                    <div class="feature-card">
+                        <h4>🎮 Gamified Learning System</h4>
+                        <p>Interactive games with star rewards, level progression, and achievement certificates to maintain student engagement throughout the learning process.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📚 Comprehensive Lesson Library</h4>
+                        <p>Step-by-step tutorials with visual aids covering all four fraction operations with detailed explanations and examples.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-card">
+                        <h4>📊 Advanced Progress Tracking</h4>
+                        <p>Detailed analytics, pre/post assessments, and performance monitoring to measure learning outcomes and improvement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏆 Achievement & Certification System</h4>
+                        <p>Downloadable certificates, progress badges, and performance statistics to celebrate student success and motivation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>1.5 Learning Structure</h2>
+            <p>The application follows a structured learning approach with <span class="highlight">9 progressive levels</span> covering:</p>
+            <ol>
+                <li><strong>Addition:</strong> Similar fractions, dissimilar fractions, mixed numbers</li>
+                <li><strong>Subtraction:</strong> Similar fractions, dissimilar fractions, mixed numbers</li>
+                <li><strong>Multiplication:</strong> Proper fractions, mixed numbers</li>
+                <li><strong>Division:</strong> All fraction types</li>
+            </ol>
+        </div>
+
+        <!-- 2. Requirements Analysis -->
+        <div class="section" id="requirements">
+            <h1>2. 📋 Requirements Analysis</h1>
+            
+            <h2>2.1 Functional Requirements</h2>
+            
+            <h3>2.1.1 User Management System</h3>
+            <ul>
+                <li><strong>FR-001:</strong> User registration with profile creation (name, grade level, section)</li>
+                <li><strong>FR-002:</strong> Secure login/logout functionality with session management</li>
+                <li><strong>FR-003:</strong> Profile management and account persistence across sessions</li>
+                <li><strong>FR-004:</strong> Multi-user support with individual progress tracking</li>
+                <li><strong>FR-005:</strong> Account recovery and data backup capabilities</li>
+            </ul>
+
+            <h3>2.1.2 Learning Management System</h3>
+            <ul>
+                <li><strong>FR-006:</strong> Interactive lessons for each fraction operation type</li>
+                <li><strong>FR-007:</strong> Visual fraction representations and step-by-step tutorials</li>
+                <li><strong>FR-008:</strong> Practice games with immediate feedback and detailed explanations</li>
+                <li><strong>FR-009:</strong> Progressive difficulty with 9 unlockable levels</li>
+                <li><strong>FR-010:</strong> Hint system and skip functionality for challenging questions</li>
+            </ul>
+
+            <h3>2.1.3 Assessment & Evaluation System</h3>
+            <ul>
+                <li><strong>FR-011:</strong> Pre-test assessment (20 questions, 20-minute timer)</li>
+                <li><strong>FR-012:</strong> Post-test assessment (20 questions, 20-minute timer)</li>
+                <li><strong>FR-013:</strong> Level-based quizzes (5 questions each, 60-second timer)</li>
+                <li><strong>FR-014:</strong> Comprehensive scoring and performance analytics</li>
+                <li><strong>FR-015:</strong> Answer review and explanation system</li>
+            </ul>
+
+            <h3>2.1.4 Progress Tracking & Gamification</h3>
+            <ul>
+                <li><strong>FR-016:</strong> Star-based achievement system (1-3 stars per level)</li>
+                <li><strong>FR-017:</strong> Level unlocking based on performance</li>
+                <li><strong>FR-018:</strong> Certificate generation and download functionality</li>
+                <li><strong>FR-019:</strong> Progress statistics and improvement tracking</li>
+                <li><strong>FR-020:</strong> Achievement badges and milestone rewards</li>
+            </ul>
+
+            <h2>2.2 Non-Functional Requirements</h2>
+            
+            <h3>2.2.1 Performance Requirements</h3>
+            <div class="note">
+                <strong>Performance Targets:</strong>
+                <ul>
+                    <li>Page load time: < 3 seconds on standard broadband</li>
+                    <li>Animation frame rate: 60fps for smooth interactions</li>
+                    <li>Offline capability: Core functionality available without internet</li>
+                    <li>Mobile responsiveness: Optimized for screens 320px and above</li>
+                </ul>
+            </div>
+
+            <h3>2.2.2 Security Requirements</h3>
+            <ul>
+                <li><strong>NFR-001:</strong> Client-side data encryption for sensitive information</li>
+                <li><strong>NFR-002:</strong> Secure session management with automatic timeout</li>
+                <li><strong>NFR-003:</strong> Input validation and sanitization for all user inputs</li>
+                <li><strong>NFR-004:</strong> XSS and CSRF protection mechanisms</li>
+                <li><strong>NFR-005:</strong> Data privacy compliance for educational applications</li>
+            </ul>
+
+            <h3>2.2.3 Usability Requirements</h3>
+            <ul>
+                <li><strong>NFR-006:</strong> Intuitive user interface suitable for grades 5-8</li>
+                <li><strong>NFR-007:</strong> WCAG 2.1 AA accessibility compliance</li>
+                <li><strong>NFR-008:</strong> Multi-device compatibility (desktop, tablet, mobile)</li>
+                <li><strong>NFR-009:</strong> Consistent design language and user experience</li>
+                <li><strong>NFR-010:</strong> Keyboard navigation support for accessibility</li>
+            </ul>
+
+            <h3>2.2.4 Reliability Requirements</h3>
+            <ul>
+                <li><strong>NFR-011:</strong> 99.9% uptime availability for educational use</li>
+                <li><strong>NFR-012:</strong> Comprehensive error handling and recovery mechanisms</li>
+                <li><strong>NFR-013:</strong> Data persistence and automatic backup systems</li>
+                <li><strong>NFR-014:</strong> Cross-browser compatibility (Chrome, Firefox, Safari, Edge)</li>
+                <li><strong>NFR-015:</strong> Graceful degradation for older browsers</li>
+            </ul>
+        </div>
+
+        <!-- 3. System Design -->
+        <div class="section" id="design">
+            <h1>3. 🏗️ System Design</h1>
+            
+            <h2>3.1 System Architecture Overview</h2>
+            <div class="diagram">
+┌─────────────────────────────────────────────────────────────┐
+│                    FractionMaster System                    │
+├─────────────────────────────────────────────────────────────┤
+│  Presentation Layer (React Components)                     │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │   UI/UX     │ │  Game Logic │ │ Assessment  │          │
+│  │ Components  │ │   Engine    │ │   System    │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+├─────────────────────────────────────────────────────────────┤
+│  Business Logic Layer                                      │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │   User      │ │   Game      │ │  Progress   │          │
+│  │ Management  │ │ Management  │ │  Tracking   │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+├─────────────────────────────────────────────────────────────┤
+│  Data Access Layer                                         │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │   Storage   │ │    Cache    │ │   Session   │          │
+│  │   Utils     │ │ Management  │ │ Management  │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+├─────────────────────────────────────────────────────────────┤
+│  Data Storage Layer (Browser Storage)                      │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
+│  │   User      │ │   Game      │ │ Assessment  │          │
+│  │ Accounts    │ │ Progress    │ │   Results   │          │
+│  └─────────────┘ └─────────────┘ └─────────────┘          │
+└─────────────────────────────────────────────────────────────┘
+            </div>
+
+            <h2>3.2 Component Architecture</h2>
+            <div class="diagram">
+App.tsx (Root Application Component)
+├── Header.tsx (Navigation & User Information)
+├── React Router (Client-side Routing)
+│   ├── Dashboard.tsx (Main Learning Hub)
+│   ├── Login.tsx (User Authentication)
+│   ├── ProfileSetup.tsx (User Registration)
+│   ├── LearningHub.tsx (Lesson Browser)
+│   ├── GameLevel.tsx (Interactive Game Engine)
+│   ├── LessonView.tsx (Educational Content Display)
+│   ├── PreTest.tsx (Initial Assessment)
+│   ├── PostTest.tsx (Final Assessment)
+│   ├── ProgressStats.tsx (Analytics Dashboard)
+│   ├── CertificateMenu.tsx (Achievement Gallery)
+│   └── Certificate.tsx (Certificate Generation)
+└── Shared Components
+    ├── FractionVisual.tsx (Visual Fraction Representations)
+    └── Common UI Elements (Buttons, Forms, Modals)
+            </div>
+
+            <h2>3.3 Data Flow Architecture</h2>
+            <div class="diagram">
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│    User     │───▶│ React       │───▶│   Storage   │
+│ Interaction │    │ Components  │    │   Layer     │
+└─────────────┘    └─────────────┘    └─────────────┘
+       ▲                   │                   │
+       │                   ▼                   │
+       │            ┌─────────────┐            │
+       └────────────│    State    │◀───────────┘
+                    │ Management  │
+                    │   (Hooks)   │
+                    └─────────────┘
+            </div>
+
+            <h2>3.4 Database Schema Design</h2>
+            <p>The application uses browser-based storage with the following data structures:</p>
+            
+            <div class="code-block">
+// User Account Structure
+interface UserAccount {
+  username: string;
+  password: string;
+  profile: UserProfile;
+  progress: GameProgress;
+}
+
+// User Profile Structure
+interface UserProfile {
+  name: string;
+  gradeLevel: string;
+  section: string;
+  createdAt: string;
+}
+
+// Game Progress Structure
+interface GameProgress {
+  levels: { [key: string]: LevelProgress };
+  preTestCompleted: boolean;
+  postTestCompleted: boolean;
+  preTestScore: number;
+  postTestScore: number;
+  preTestTrials: number;
+  postTestTrials: number;
+  totalStars: number;
+}
+            </div>
+
+            <h2>3.5 Security Architecture</h2>
+            <div class="important">
+                <strong>Security Layers Implementation:</strong>
+                <ul>
+                    <li><strong>Input Validation:</strong> All user inputs are validated and sanitized</li>
+                    <li><strong>Session Management:</strong> Secure session handling with automatic cleanup</li>
+                    <li><strong>Data Protection:</strong> Client-side encryption for sensitive data</li>
+                    <li><strong>Access Control:</strong> Role-based access to different application features</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. Architecture & Technical Specifications -->
+        <div class="section" id="architecture">
+            <h1>4. 🏗️ Architecture & Technical Specifications</h1>
+            
+            <h2>4.1 Technology Stack</h2>
+            
+            <h3>4.1.1 Frontend Framework</h3>
+            <table class="stats-table">
+                <tr><th>Technology</th><th>Version</th><th>Purpose</th></tr>
+                <tr><td>React</td><td>18.3.1</td><td>Modern UI library with hooks and concurrent features</td></tr>
+                <tr><td>TypeScript</td><td>5.5.3</td><td>Type-safe JavaScript development</td></tr>
+                <tr><td>Vite</td><td>5.4.2</td><td>Fast build tool and development server</td></tr>
+                <tr><td>React Router DOM</td><td>7.8.2</td><td>Client-side routing and navigation</td></tr>
+            </table>
+
+            <h3>4.1.2 Styling & UI Framework</h3>
+            <table class="stats-table">
+                <tr><th>Technology</th><th>Version</th><th>Purpose</th></tr>
+                <tr><td>Tailwind CSS</td><td>3.4.1</td><td>Utility-first CSS framework</td></tr>
+                <tr><td>Lucide React</td><td>0.344.0</td><td>Modern icon library</td></tr>
+                <tr><td>PostCSS</td><td>8.4.35</td><td>CSS processing and optimization</td></tr>
+                <tr><td>Autoprefixer</td><td>10.4.18</td><td>CSS vendor prefixing</td></tr>
+            </table>
+
+            <h3>4.1.3 Development Tools</h3>
+            <ul>
+                <li><strong>ESLint 9.9.1:</strong> Code linting and quality assurance</li>
+                <li><strong>TypeScript ESLint 8.3.0:</strong> TypeScript-specific linting rules</li>
+                <li><strong>Vite Plugin React 4.3.1:</strong> React integration for Vite</li>
+                <li><strong>html2canvas 1.4.1:</strong> Screenshot and PDF generation</li>
+            </ul>
+
+            <h2>4.2 System Requirements</h2>
+            
+            <h3>4.2.1 Browser Compatibility</h3>
+            <table class="stats-table">
+                <tr><th>Browser</th><th>Minimum Version</th><th>Features Supported</th></tr>
+                <tr><td>Google Chrome</td><td>90+</td><td>Full feature set, PWA support</td></tr>
+                <tr><td>Mozilla Firefox</td><td>88+</td><td>Full feature set, PWA support</td></tr>
+                <tr><td>Safari</td><td>14+</td><td>Full feature set, limited PWA</td></tr>
+                <tr><td>Microsoft Edge</td><td>90+</td><td>Full feature set, PWA support</td></tr>
+            </table>
+
+            <h3>4.2.2 Device Compatibility</h3>
+            <ul>
+                <li><strong>Desktop:</strong> 1024px+ screens with full keyboard and mouse support</li>
+                <li><strong>Tablet:</strong> 768px - 1023px screens with touch optimization</li>
+                <li><strong>Mobile:</strong> 320px - 767px screens with mobile-first design</li>
+                <li><strong>Accessibility:</strong> Screen reader support and keyboard navigation</li>
+            </ul>
+
+            <h3>4.2.3 Performance Targets</h3>
+            <div class="note">
+                <strong>Core Web Vitals Compliance:</strong>
+                <ul>
+                    <li><strong>First Contentful Paint (FCP):</strong> < 1.5 seconds</li>
+                    <li><strong>Largest Contentful Paint (LCP):</strong> < 2.5 seconds</li>
+                    <li><strong>Cumulative Layout Shift (CLS):</strong> < 0.1</li>
+                    <li><strong>First Input Delay (FID):</strong> < 100 milliseconds</li>
+                </ul>
+            </div>
+
+            <h2>4.3 Storage Architecture</h2>
+            <div class="code-block">
+// Storage Keys Structure
+const STORAGE_KEYS = {
+  USER_ACCOUNTS: 'fractionmaster_accounts',
+  CURRENT_USER: 'fractionmaster_current_user',
+  SESSION_CACHE: 'fractionmaster_session_cache'
+};
+
+// Storage Size Limits
+const STORAGE_LIMITS = {
+  LOCAL_STORAGE: '5MB maximum',
+  SESSION_STORAGE: '1MB maximum',
+  CACHE_STORAGE: '10MB maximum'
+};
+            </div>
+        </div>
+
+        <!-- 5. Implementation Details -->
+        <div class="section" id="implementation">
+            <h1>5. ⚙️ Implementation Details</h1>
+            
+            <h2>5.1 Core System Implementation</h2>
+            
+            <h3>5.1.1 Authentication System</h3>
+            <div class="code-block">
+// User Authentication Implementation
+interface UserProfile {
+  name: string;
+  gradeLevel: string;
+  section: string;
+  createdAt: string;
+}
+
+interface UserAccount {
+  username: string;
+  password: string;
+  profile: UserProfile;
+  progress: GameProgress;
+}
+
+// Secure account management
+const saveUserAccount = (username: string, password: string, profile: UserProfile) => {
+  const accounts = loadAllAccounts();
+  const userAccount: UserAccount = { username, password, profile, progress };
+  accounts.push(userAccount);
+  localStorage.setItem(USER_ACCOUNTS_KEY, JSON.stringify(accounts));
+  initializeSession();
+}
+
+// User authentication
+const authenticateUser = (username: string, password: string) => {
+  const accounts = loadAllAccounts();
+  const account = accounts.find(acc => 
+    acc.username === username && acc.password === password
+  );
+  
+  if (account) {
+    localStorage.setItem(CURRENT_USER_KEY, username);
+    initializeSession();
+    return { profile: account.profile, progress: account.progress };
+  }
+  return null;
+}
+            </div>
+
+            <h3>5.1.2 Game Engine Implementation</h3>
+            <div class="code-block">
+// Game Level Structure
+interface GameLevel {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  operation: 'addition' | 'subtraction' | 'multiplication' | 'division';
+  category: string;
+  unlocked: boolean;
+  questions: Question[];
+}
+
+// Progress Tracking
+interface GameProgress {
+  levels: { [key: string]: LevelProgress };
+  totalStars: number;
+  preTestCompleted: boolean;
+  postTestCompleted: boolean;
+  preTestScore: number;
+  postTestScore: number;
+}
+
+// Star Calculation Algorithm
+const calculateStars = (score: number, totalQuestions: number): number => {
+  const percentage = (score / totalQuestions) * 100;
+  if (percentage === 100) return 3;  // Perfect score
+  if (percentage >= 80) return 2;    // Excellent performance
+  if (percentage >= 60) return 1;    // Good performance
+  return 0;                          // Needs improvement
+}
+
+// Level Unlocking Logic
+const isLevelUnlocked = (levelIndex: number, gameProgress: GameProgress): boolean => {
+  if (levelIndex === 0) return true; // First level always unlocked
+  const previousLevel = gameLevels[levelIndex - 1];
+  const previousProgress = gameProgress.levels[previousLevel.id];
+  return previousProgress?.completed || false;
+}
+            </div>
+
+            <h3>5.1.3 Assessment System Implementation</h3>
+            <div class="code-block">
+// Question Structure
+interface Question {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  visualFraction?: {
+    numerator: number;
+    denominator: number;
+  };
+}
+
+// Assessment Timer Implementation
+const useAssessmentTimer = (initialTime: number) => {
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    if (!isActive || timeLeft <= 0) return;
+    
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          setIsActive(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isActive, timeLeft]);
+
+  return { timeLeft, isActive, setIsActive };
+}
+            </div>
+
+            <h2>5.2 Key Algorithms</h2>
+            
+            <h3>5.2.1 Progress Calculation</h3>
+            <div class="code-block">
+// Calculate overall progress percentage
+const calculateProgressPercentage = (gameProgress: GameProgress): number => {
+  const completedLevels = Object.values(gameProgress.levels)
+    .filter(level => level.completed).length;
+  return (completedLevels / 9) * 100; // 9 total levels
+}
+
+// Calculate improvement between pre and post tests
+const calculateImprovement = (preScore: number, postScore: number): number => {
+  return postScore - preScore;
+}
+
+// Determine performance level
+const getPerformanceLevel = (percentage: number): string => {
+  if (percentage >= 80) return 'Excellent';
+  if (percentage >= 60) return 'Good';
+  if (percentage >= 40) return 'Progressing';
+  return 'Getting Started';
+}
+            </div>
+
+            <h3>5.2.2 Cache Management System</h3>
+            <div class="code-block">
+// Cache Management Implementation
+const clearSessionCache = () => {
+  try {
+    localStorage.removeItem(CURRENT_USER_KEY);
+    localStorage.removeItem(SESSION_CACHE_KEY);
+    sessionStorage.clear();
+    console.log('Session cache cleared successfully');
+  } catch (error) {
+    console.error('Error clearing session cache:', error);
+  }
+};
+
+const initializeSession = () => {
+  try {
+    localStorage.setItem(SESSION_CACHE_KEY, new Date().toISOString());
+    console.log('Session initialized');
+  } catch (error) {
+    console.error('Error initializing session:', error);
+  }
+};
+
+const isSessionActive = (): boolean => {
+  try {
+    return localStorage.getItem(SESSION_CACHE_KEY) !== null;
+  } catch (error) {
+    console.error('Error checking session status:', error);
+    return false;
+  }
+};
+            </div>
+        </div>
+
+        <!-- 6. Testing Strategy -->
+        <div class="section" id="testing">
+            <h1>6. 🧪 Testing Strategy</h1>
+            
+            <h2>6.1 Testing Approach</h2>
+            
+            <h3>6.1.1 Unit Testing</h3>
+            <ul>
+                <li><strong>Component Testing:</strong> Individual React component rendering and behavior</li>
+                <li><strong>Function Testing:</strong> Pure function logic validation and edge cases</li>
+                <li><strong>Hook Testing:</strong> Custom React hooks behavior and state management</li>
+                <li><strong>Utility Testing:</strong> Storage utilities and helper functions</li>
+            </ul>
+
+            <h3>6.1.2 Integration Testing</h3>
+            <ul>
+                <li><strong>User Flow Testing:</strong> Complete user journeys from registration to completion</li>
+                <li><strong>Component Integration:</strong> Parent-child component communication</li>
+                <li><strong>Storage Integration:</strong> Data persistence and retrieval across sessions</li>
+                <li><strong>Router Testing:</strong> Navigation and route protection</li>
+            </ul>
+
+            <h3>6.1.3 End-to-End Testing</h3>
+            <ul>
+                <li><strong>User Journey Testing:</strong> Complete learning paths and assessments</li>
+                <li><strong>Cross-Browser Testing:</strong> Functionality across different browsers</li>
+                <li><strong>Performance Testing:</strong> Load times and responsiveness</li>
+                <li><strong>Accessibility Testing:</strong> Screen reader and keyboard navigation</li>
+            </ul>
+
+            <h2>6.2 Test Coverage Areas</h2>
+            
+            <h3>6.2.1 Authentication Flow Testing</h3>
+            <div class="code-block">
+// Test Cases for Authentication
+describe('Authentication System', () => {
+  test('User registration creates new account', () => {
+    // Test account creation with valid data
+  });
+  
+  test('User login with valid credentials', () => {
+    // Test successful login flow
+  });
+  
+  test('User logout clears session', () => {
+    // Test session cleanup on logout
+  });
+  
+  test('Session persistence across page reloads', () => {
+    // Test session maintenance
+  });
+});
+            </div>
+
+            <h3>6.2.2 Game Mechanics Testing</h3>
+            <ul>
+                <li><strong>Question Answering:</strong> Correct answer validation and scoring</li>
+                <li><strong>Timer Functionality:</strong> Countdown timers and auto-submission</li>
+                <li><strong>Progress Tracking:</strong> Star calculation and level unlocking</li>
+                <li><strong>Hint System:</strong> Hint usage limits and functionality</li>
+            </ul>
+
+            <h3>6.2.3 Assessment System Testing</h3>
+            <ul>
+                <li><strong>Pre/Post Test Flow:</strong> Complete assessment experience</li>
+                <li><strong>Score Calculation:</strong> Accurate scoring and percentage calculation</li>
+                <li><strong>Result Display:</strong> Proper result presentation and explanations</li>
+                <li><strong>Certificate Generation:</strong> PDF creation and download functionality</li>
+            </ul>
+
+            <h2>6.3 Performance Testing</h2>
+            <div class="note">
+                <strong>Performance Benchmarks:</strong>
+                <ul>
+                    <li><strong>Load Testing:</strong> Application performance under normal user load</li>
+                    <li><strong>Stress Testing:</strong> Behavior under extreme conditions</li>
+                    <li><strong>Memory Testing:</strong> Memory usage and potential leaks</li>
+                    <li><strong>Battery Testing:</strong> Mobile device battery consumption</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. Deployment Guide -->
+        <div class="section" id="deployment">
+            <h1>7. 🚀 Deployment Guide</h1>
+            
+            <h2>7.1 Build Process</h2>
+            
+            <h3>7.1.1 Development Environment Setup</h3>
+            <div class="code-block">
+# Prerequisites
+Node.js 18.x or higher
+npm 9.x or higher
+
+# Installation
+git clone [repository-url]
+cd fractionmaster
+npm install
+
+# Development Commands
+npm run dev          # Start development server (http://localhost:5173)
+npm run lint         # Run ESLint code quality checks
+npm run build        # Create production build
+npm run preview      # Preview production build locally
+            </div>
+
+            <h3>7.1.2 Production Build Process</h3>
+            <div class="code-block">
+# Production Build Steps
+1. npm ci                    # Clean install dependencies
+2. npm run lint             # Verify code quality
+3. npm run build            # Build optimized bundle
+4. npm run preview          # Test production build
+5. Deploy dist/ folder      # Deploy to hosting platform
+            </div>
+
+            <h2>7.2 Deployment Platforms</h2>
+            
+            <h3>7.2.1 Current Deployment (Bolt Hosting)</h3>
+            <table class="stats-table">
+                <tr><th>Property</th><th>Value</th></tr>
+                <tr><td>Platform</td><td>Bolt Hosting</td></tr>
+                <tr><td>URL</td><td>https://complete-fraction-le-uunf.bolt.host</td></tr>
+                <tr><td>Build Command</td><td>npm run build</td></tr>
+                <tr><td>Output Directory</td><td>dist</td></tr>
+                <tr><td>Node Version</td><td>18.x</td></tr>
+            </table>
+
+            <h3>7.2.2 Alternative Deployment Options</h3>
+            <ul>
+                <li><strong>Netlify:</strong> Static site hosting with continuous deployment</li>
+                <li><strong>Vercel:</strong> Edge-optimized deployment with global CDN</li>
+                <li><strong>GitHub Pages:</strong> Free hosting for open-source projects</li>
+                <li><strong>Firebase Hosting:</strong> Google Cloud-based hosting solution</li>
+            </ul>
+
+            <h2>7.3 Environment Configuration</h2>
+            
+            <h3>7.3.1 Environment Variables</h3>
+            <div class="code-block">
+# .env file configuration
+VITE_APP_NAME=FractionMaster
+VITE_APP_VERSION=1.0.0
+VITE_BUILD_DATE=2024-12-19
+VITE_ENVIRONMENT=production
+            </div>
+
+            <h3>7.3.2 PWA Configuration</h3>
+            <div class="code-block">
+// manifest.json
+{
+  "name": "FractionMaster - Interactive Learning Platform",
+  "short_name": "FractionMaster",
+  "description": "Complete educational platform for learning fractions",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+            </div>
+
+            <h2>7.4 Deployment Checklist</h2>
+            <div class="important">
+                <strong>Pre-Deployment Verification:</strong>
+                <ul>
+                    <li>✅ All tests passing</li>
+                    <li>✅ Code quality checks passed</li>
+                    <li>✅ Performance benchmarks met</li>
+                    <li>✅ Cross-browser compatibility verified</li>
+                    <li>✅ Mobile responsiveness tested</li>
+                    <li>✅ Accessibility compliance checked</li>
+                    <li>✅ Security vulnerabilities scanned</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8. Maintenance & Support -->
+        <div class="section" id="maintenance">
+            <h1>8. 🔧 Maintenance & Support</h1>
+            
+            <h2>8.1 Monitoring & Analytics</h2>
+            
+            <h3>8.1.1 Performance Monitoring</h3>
+            <ul>
+                <li><strong>Core Web Vitals:</strong> Continuous monitoring of loading performance</li>
+                <li><strong>Error Tracking:</strong> JavaScript error logging and reporting</li>
+                <li><strong>User Analytics:</strong> Usage patterns and feature adoption</li>
+                <li><strong>Performance Budgets:</strong> Automated alerts for performance degradation</li>
+            </ul>
+
+            <h3>8.1.2 User Feedback Collection</h3>
+            <ul>
+                <li><strong>In-App Feedback:</strong> User satisfaction surveys and bug reports</li>
+                <li><strong>Usage Analytics:</strong> Learning path completion rates and difficulty analysis</li>
+                <li><strong>Feature Requests:</strong> User-driven feature prioritization</li>
+                <li><strong>Educational Effectiveness:</strong> Learning outcome measurement</li>
+            </ul>
+
+            <h2>8.2 Update & Release Management</h2>
+            
+            <h3>8.2.1 Version Control Strategy</h3>
+            <div class="code-block">
+// Semantic Versioning (MAJOR.MINOR.PATCH)
+1.0.0 - Initial release
+1.0.1 - Bug fixes and minor improvements
+1.1.0 - New features and enhancements
+2.0.0 - Major updates with breaking changes
+
+// Release Branch Strategy
+main branch      - Production-ready code
+develop branch   - Integration branch for features
+feature branches - Individual feature development
+hotfix branches  - Critical bug fixes
+            </div>
+
+            <h3>8.2.2 Release Process</h3>
+            <ol>
+                <li><strong>Feature Development:</strong> Create feature branch from develop</li>
+                <li><strong>Code Review:</strong> Peer review and quality assurance</li>
+                <li><strong>Testing:</strong> Comprehensive testing suite execution</li>
+                <li><strong>Integration:</strong> Merge to develop branch</li>
+                <li><strong>Release Preparation:</strong> Create release branch</li>
+                <li><strong>Production Deployment:</strong> Deploy to production environment</li>
+                <li><strong>Post-Deployment:</strong> Monitor and verify functionality</li>
+            </ol>
+
+            <h2>8.3 Backup & Recovery</h2>
+            <div class="note">
+                <strong>Data Protection Strategy:</strong>
+                <ul>
+                    <li><strong>User Data Backup:</strong> Regular export of user progress data</li>
+                    <li><strong>Code Repository:</strong> Version control with multiple remote backups</li>
+                    <li><strong>Configuration Backup:</strong> Environment and deployment configurations</li>
+                    <li><strong>Recovery Procedures:</strong> Documented rollback and recovery processes</li>
+                </ul>
+            </div>
+
+            <h2>8.4 Support Procedures</h2>
+            <ul>
+                <li><strong>Bug Reporting:</strong> Standardized bug report template and triage process</li>
+                <li><strong>Feature Requests:</strong> User feedback collection and prioritization</li>
+                <li><strong>Technical Support:</strong> User assistance and troubleshooting guides</li>
+                <li><strong>Educational Support:</strong> Teacher and student usage guidance</li>
+            </ul>
+        </div>
+
+        <!-- 9. Visual System Maps -->
+        <div class="section" id="visual-maps">
+            <h1>9. 🗺️ Visual System Maps</h1>
+            
+            <h2>9.1 User Journey Map</h2>
+            <div class="diagram">
+Registration → Profile Setup → Dashboard → Learning Path
+     ↓              ↓             ↓           ↓
+  Account        Personal      Progress    Interactive
+  Creation       Details       Overview     Learning
+     ↓              ↓             ↓           ↓
+  Username       Grade &       Quick        Lessons &
+  Password       Section       Actions      Games
+     ↓              ↓             ↓           ↓
+  Validation     Preferences   Navigation   Assessment
+     ↓              ↓             ↓           ↓
+  Welcome        Ready to      Learning     Progress
+  Screen         Learn         Hub          Tracking
+            </div>
+
+            <h2>9.2 Learning Flow Diagram</h2>
+            <div class="diagram">
+Pre-Test Assessment (20 Questions, 20 Minutes)
+        ↓
+   Results Analysis & Baseline Establishment
+        ↓
+┌─────────────────────────────────────────────────────────┐
+│                Learning Levels (9 Total)               │
+│                                                         │
+│  Addition Levels (1-3)                                 │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐            │
+│  │Level 1  │───▶│Level 2  │───▶│Level 3  │            │
+│  │Similar  │    │Dissim.  │    │Mixed    │            │
+│  │Fractions│    │Fractions│    │Numbers  │            │
+│  └─────────┘    └─────────┘    └─────────┘            │
+│                                                         │
+│  Subtraction Levels (4-6)                              │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐            │
+│  │Level 4  │───▶│Level 5  │───▶│Level 6  │            │
+│  │Similar  │    │Dissim.  │    │Mixed    │            │
+│  │Fractions│    │Fractions│    │Numbers  │            │
+│  └─────────┘    └─────────┘    └─────────┘            │
+│                                                         │
+│  Multiplication & Division Levels (7-9)                │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐            │
+│  │Level 7  │───▶│Level 8  │───▶│Level 9  │            │
+│  │Multiply │    │Multiply │    │Division │            │
+│  │Proper   │    │Mixed    │    │All Types│            │
+│  └─────────┘    └─────────┘    └─────────┘            │
+└─────────────────────────────────────────────────────────┘
+        ↓
+  Post-Test Assessment (20 Questions, 20 Minutes)
+        ↓
+   Performance Analysis & Certificate Award
+            </div>
+
+            <h2>9.3 Component Interaction Map</h2>
+            <div class="diagram">
+┌─────────────────────────────────────────────────────────┐
+│                      App.tsx                            │
+│  ┌─────────────────────────────────────────────────┐    │
+│  │                Header.tsx                       │    │
+│  │  [Logo] [Navigation] [User Profile] [Logout]   │    │
+│  └─────────────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────────────┐    │
+│  │                Router Outlet                    │    │
+│  │  ┌─────────────┐ ┌─────────────┐ ┌───────────┐  │    │
+│  │  │ Dashboard   │ │ GameLevel   │ │ Progress  │  │    │
+│  │  │   - Stats   │ │ - Questions │ │   Stats   │  │    │
+│  │  │   - Levels  │ │ - Timer     │ │ - Charts  │  │    │
+│  │  │   - Tests   │ │ - Scoring   │ │ - History │  │    │
+│  │  └─────────────┘ └─────────────┘ └───────────┘  │    │
+│  │  ┌─────────────┐ ┌─────────────┐ ┌───────────┐  │    │
+│  │  │ LessonView  │ │ Certificate │ │ Learning  │  │    │
+│  │  │ - Content   │ │ - Generate  │ │    Hub    │  │    │
+│  │  │ - Examples  │ │ - Download  │ │ - Browse  │  │    │
+│  │  │ - Practice  │ │ - Share     │ │ - Search  │  │    │
+│  │  └─────────────┘ └─────────────┘ └───────────┘  │    │
+│  └─────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+            </div>
+
+            <h2>9.4 Data Flow Architecture</h2>
+            <div class="diagram">
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│    User     │───▶│ React       │───▶│   Storage   │
+│ Interaction │    │ Components  │    │   Layer     │
+│             │    │             │    │             │
+│ - Clicks    │    │ - State     │    │ - Local     │
+│ - Input     │    │ - Props     │    │ - Session   │
+│ - Navigation│    │ - Hooks     │    │ - Cache     │
+└─────────────┘    └─────────────┘    └─────────────┘
+       ▲                   │                   │
+       │                   ▼                   │
+       │            ┌─────────────┐            │
+       │            │    State    │            │
+       └────────────│ Management  │◀───────────┘
+                    │             │
+                    │ - User      │
+                    │ - Progress  │
+                    │ - Game      │
+                    └─────────────┘
+            </div>
+
+            <h2>9.5 Security Architecture</h2>
+            <div class="diagram">
+┌─────────────────────────────────────────────────────────┐
+│                 Security Layers                         │
+├─────────────────────────────────────────────────────────┤
+│  Input Validation & Sanitization Layer                 │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │
+│  │   Forms     │ │   Routes    │ │   Storage   │      │
+│  │ Validation  │ │ Protection  │ │ Validation  │      │
+│  │ - Required  │ │ - Auth      │ │ - Sanitize  │      │
+│  │ - Format    │ │ - Guards    │ │ - Encrypt   │      │
+│  └─────────────┘ └─────────────┘ └─────────────┘      │
+├─────────────────────────────────────────────────────────┤
+│  Session Management Layer                               │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │
+│  │   Login     │ │   Session   │ │   Logout    │      │
+│  │   Control   │ │  Tracking   │ │  Cleanup    │      │
+│  │ - Auth      │ │ - Timeout   │ │ - Clear     │      │
+│  │ - Validate  │ │ - Refresh   │ │ - Secure    │      │
+│  └─────────────┘ └─────────────┘ └─────────────┘      │
+├─────────────────────────────────────────────────────────┤
+│  Data Protection Layer                                  │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐      │
+│  │   Client    │ │   Storage   │ │   Privacy   │      │
+│  │    Side     │ │ Encryption  │ │ Controls    │      │
+│  │ - XSS       │ │ - Local     │ │ - GDPR      │      │
+│  │ - CSRF      │ │ - Session   │ │ - Consent   │      │
+│  └─────────────┘ └─────────────┘ └─────────────┘      │
+└─────────────────────────────────────────────────────────┘
+            </div>
+        </div>
+
+        <!-- 10. Technical Reference -->
+        <div class="section" id="technical-ref">
+            <h1>10. 📖 Technical Reference</h1>
+            
+            <h2>10.1 API Reference</h2>
+            
+            <h3>10.1.1 User Management Functions</h3>
+            <div class="code-block">
+// User Account Management
+saveUserAccount(username: string, password: string, profile: UserProfile): void
+  - Creates new user account with encrypted storage
+  - Initializes user session and progress tracking
+
+authenticateUser(username: string, password: string): UserData | null
+  - Validates user credentials against stored accounts
+  - Returns user data on success, null on failure
+
+loadCurrentUser(): { profile: UserProfile | null; progress: GameProgress }
+  - Retrieves current user session data
+  - Returns profile and progress information
+
+logoutUser(): void
+  - Clears current user session
+  - Maintains account data for future logins
+
+updateUserData(profile: UserProfile, progress: GameProgress): void
+  - Updates user profile and progress information
+  - Persists changes to local storage
+            </div>
+
+            <h3>10.1.2 Cache Management Functions</h3>
+            <div class="code-block">
+// Session Cache Management
+clearSessionCache(): void
+  - Clears current user session data
+  - Preserves account information
+
+clearAllCache(): void
+  - Removes all application data
+  - Used for complete reset scenarios
+
+initializeSession(): void
+  - Establishes new user session
+  - Sets session timestamp
+
+isSessionActive(): boolean
+  - Checks if user session is active
+  - Returns boolean session status
+            </div>
+
+            <h3>10.1.3 Game Management Functions</h3>
+            <div class="code-block">
+// Game Logic Functions
+isLevelUnlocked(levelIndex: number, gameProgress: GameProgress): boolean
+  - Determines if level is available to play
+  - Based on previous level completion
+
+calculateStars(score: number, totalQuestions: number): number
+  - Calculates star rating based on performance
+  - Returns 0-3 stars based on percentage
+
+updateProgress(newProgress: GameProgress): void
+  - Updates user game progress
+  - Triggers achievement calculations
+
+handleTestComplete(score: number, testType: string): void
+  - Processes test completion
+  - Updates progress and generates certificates
+            </div>
+
+            <h2>10.2 Configuration Reference</h2>
+            
+            <h3>10.2.1 TypeScript Configuration</h3>
+            <div class="code-block">
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+            </div>
+
+            <h3>10.2.2 Tailwind CSS Configuration</h3>
+            <div class="code-block">
+// tailwind.config.js
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+        secondary: '#1E40AF',
+        success: '#10B981',
+        warning: '#F59E0B',
+        error: '#EF4444'
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif']
+      }
+    }
+  },
+  plugins: []
+}
+            </div>
+
+            <h2>10.3 Performance Optimization</h2>
+            
+            <h3>10.3.1 Code Splitting Strategy</h3>
+            <ul>
+                <li><strong>Route-based Splitting:</strong> Each page component loaded on demand</li>
+                <li><strong>Component Lazy Loading:</strong> Heavy components loaded when needed</li>
+                <li><strong>Dynamic Imports:</strong> Feature-specific code bundled separately</li>
+                <li><strong>Tree Shaking:</strong> Unused code eliminated from final bundle</li>
+            </ul>
+
+            <h3>10.3.2 Asset Optimization</h3>
+            <ul>
+                <li><strong>Image Optimization:</strong> Compressed images with appropriate formats</li>
+                <li><strong>CSS Purging:</strong> Unused CSS classes removed from production</li>
+                <li><strong>JavaScript Minification:</strong> Code compressed for smaller bundle size</li>
+                <li><strong>Font Optimization:</strong> Web fonts loaded efficiently</li>
+            </ul>
+
+            <h3>10.3.3 Caching Strategy</h3>
+            <div class="note">
+                <strong>Multi-layer Caching Approach:</strong>
+                <ul>
+                    <li><strong>Browser Cache:</strong> Static assets cached with appropriate headers</li>
+                    <li><strong>Service Worker:</strong> Offline functionality and resource caching</li>
+                    <li><strong>Local Storage:</strong> User data and progress persistence</li>
+                    <li><strong>Memory Optimization:</strong> Efficient state management and cleanup</li>
+                </ul>
+            </div>
+
+            <h2>10.4 Troubleshooting Guide</h2>
+            
+            <h3>10.4.1 Common Issues</h3>
+            <table class="stats-table">
+                <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+                <tr><td>Login not working</td><td>Cached data corruption</td><td>Clear browser storage and retry</td></tr>
+                <tr><td>Progress not saving</td><td>Storage quota exceeded</td><td>Clear old data or use different browser</td></tr>
+                <tr><td>Slow performance</td><td>Large cache size</td><td>Clear application cache</td></tr>
+                <tr><td>Certificate not downloading</td><td>Browser popup blocker</td><td>Allow popups for the site</td></tr>
+            </table>
+
+            <h3>10.4.2 Browser Compatibility Issues</h3>
+            <ul>
+                <li><strong>Safari iOS:</strong> Limited PWA support, use web app instead</li>
+                <li><strong>Internet Explorer:</strong> Not supported, upgrade to modern browser</li>
+                <li><strong>Firefox Private Mode:</strong> Limited storage, use normal mode</li>
+                <li><strong>Chrome Incognito:</strong> Data not persisted, use normal mode</li>
+            </ul>
+        </div>
+
+        <!-- Document Footer -->
+        <div class="section">
+            <h1>📋 Document Summary</h1>
+            <p><strong>FractionMaster</strong> represents a comprehensive educational platform built with modern web technologies. The application successfully combines engaging gamification with solid educational principles to create an effective learning environment for fraction mathematics.</p>
+            
+            <h2>Key Achievements</h2>
+            <ul>
+                <li>✅ <strong>Complete SDLC Implementation:</strong> Full software development lifecycle documentation</li>
+                <li>✅ <strong>Modern Architecture:</strong> React/TypeScript with component-based design</li>
+                <li>✅ <strong>Comprehensive Testing:</strong> Multi-layer testing strategy and quality assurance</li>
+                <li>✅ <strong>Production Deployment:</strong> Live application with PWA capabilities</li>
+                <li>✅ <strong>Scalable Codebase:</strong> Maintainable and extensible architecture</li>
+            </ul>
+
+            <h2>Future Enhancement Opportunities</h2>
+            <ul>
+                <li><strong>Advanced Analytics:</strong> Detailed learning analytics dashboard</li>
+                <li><strong>Teacher Portal:</strong> Classroom management and student monitoring</li>
+                <li><strong>Multi-language Support:</strong> Internationalization for global reach</li>
+                <li><strong>Advanced Accessibility:</strong> Enhanced features for diverse learners</li>
+                <li><strong>Mobile App:</strong> Native mobile application development</li>
+            </ul>
+
+            <div class="important">
+                <strong>Document Information:</strong><br>
+                <strong>Version:</strong> 1.0<br>
+                <strong>Last Updated:</strong> December 19, 2024<br>
+                <strong>Prepared By:</strong> Development Team<br>
+                <strong>Review Status:</strong> Approved for Production<br>
+                <strong>Document Type:</strong> SDLC Software Documentation
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadAsWord() {
+            // Create a new window with the document content
+            const content = document.querySelector('.document').innerHTML;
+            
+            // Create Word document structure
+            const wordDoc = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                      xmlns:w='urn:schemas-microsoft-com:office:word' 
+                      xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>FractionMaster Software Documentation</title>
+                    <style>
+                        body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.6; }
+                        h1 { font-size: 18pt; color: #1E40AF; border-bottom: 2px solid #2563EB; }
+                        h2 { font-size: 14pt; color: #374151; }
+                        h3 { font-size: 12pt; color: #4B5563; }
+                        .code-block { background: #F3F4F6; border-left: 4px solid #2563EB; padding: 10pt; font-family: Courier New; }
+                        .diagram { background: #F9FAFB; border: 2px solid #E5E7EB; padding: 15pt; font-family: Courier New; }
+                        .stats-table { border-collapse: collapse; width: 100%; }
+                        .stats-table th, .stats-table td { border: 1px solid #D1D5DB; padding: 8pt; }
+                        .stats-table th { background: #F3F4F6; }
+                        .important { background: #FEE2E2; border-left: 4px solid #EF4444; padding: 10pt; }
+                        .note { background: #EFF6FF; border-left: 4px solid #3B82F6; padding: 10pt; }
+                        .download-section { display: none; }
+                    </style>
+                </head>
+                <body>
+                    ${content}
+                </body>
+                </html>
+            `;
+            
+            // Create blob and download
+            const blob = new Blob([wordDoc], {
+                type: 'application/msword'
+            });
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'FractionMaster_Software_Documentation.doc';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+            
+            alert('📄 Word document downloaded successfully!\n\nThe document is now available in your Downloads folder and can be opened with Microsoft Word or any compatible word processor for editing.');
+        }
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
