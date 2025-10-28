@@ -67,7 +67,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, gameProgress }) => {
               <BookOpen className="text-green-600" size={24} />
             </div>
             <div>
-              <h3 className="font-bold text-gray-800">Pre-Test</h3>
+              <h3 className="font-bold text-gray-800">Pretest</h3>
               <p className="text-gray-600 text-sm">Test your current knowledge</p>
               {gameProgress.preTestCompleted && (
                 <p className="text-green-600 text-sm font-semibold">Score: {gameProgress.preTestScore}/20</p>
