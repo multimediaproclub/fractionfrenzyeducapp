@@ -177,7 +177,7 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
   };
 
   const shareCertificate = async (certificate: CertificateData) => {
-    const shareText = `I've earned a ${certificate.title} from FractionMaster! 🎉`;
+    const shareText = `I've earned a ${certificate.title} from Fraction Master! 🎉`;
     
     if (navigator.share) {
       try {
@@ -323,7 +323,7 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
                     <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Award className="text-white" size={32} />
                     </div>
-                    <h1 className="text-3xl font-bold text-blue-900 mb-2">FractionMaster</h1>
+                    <h1 className="text-3xl font-bold text-blue-900 mb-2">Fraction Master</h1>
                     <h2 className="text-xl font-semibold text-gray-700">{selectedCertificate.title}</h2>
                   </div>
 
