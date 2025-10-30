@@ -70,17 +70,17 @@ const Certificate: React.FC<CertificateProps> = ({ userProfile }) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `${userProfile.name} - FractionMaster Certificate`,
-          text: `I've earned a ${getCertificateTitle()} from FractionMaster!`,
+          title: `${userProfile.name} - Fraction Master Certificate`,
+          text: `I've earned a ${getCertificateTitle()} from Fraction Master!`,
           url: window.location.href,
         });
       } catch (error) {
         // User cancelled or permission denied - fallback to clipboard
-        navigator.clipboard.writeText(`Check out my FractionMaster certificate! ${window.location.href}`);
+        navigator.clipboard.writeText(`Check out my Fraction Master certificate! ${window.location.href}`);
         alert('Certificate link copied to clipboard!');
       }
     } else {
-      navigator.clipboard.writeText(`Check out my FractionMaster certificate! ${window.location.href}`);
+      navigator.clipboard.writeText(`Check out my Fraction Master certificate! ${window.location.href}`);
       alert('Certificate link copied to clipboard!');
     }
   };

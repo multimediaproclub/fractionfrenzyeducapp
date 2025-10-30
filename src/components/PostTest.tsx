@@ -12,32 +12,10 @@ const PostTest: React.FC<PostTestProps> = ({ onTestComplete }) => {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(new Array(20).fill(null));
-  const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes
   const [isComplete, setIsComplete] = useState(false);
   const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
 
-  useEffect(() => {
-    if (isComplete) return;
-    
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          handleTimeUp();
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [isComplete]);
-
-  const handleTimeUp = () => {
-    calculateScore();
-    setIsComplete(true);
-    setShowResults(true);
-  };
 
   const handleAnswerSelect = (questionIndex: number, answerIndex: number) => {
     const newAnswers = [...selectedAnswers];
@@ -161,12 +139,6 @@ const PostTest: React.FC<PostTestProps> = ({ onTestComplete }) => {
             <p className="text-gray-600">Show what you've learned about fractions</p>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 bg-blue-100 px-3 py-2 rounded-lg">
-              <Clock className="text-blue-600" size={20} />
-              <span className="font-semibold text-blue-600">
-                {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
-              </span>
-            </div>
             <div className="text-sm font-semibold text-gray-600">
               {answeredCount}/20 answered
             </div>

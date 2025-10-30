@@ -18,7 +18,7 @@ const GameLevel: React.FC<GameLevelProps> = ({ gameProgress, onProgressUpdate })
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60);
+  const [timeLeft, setTimeLeft] = useState(120);
   const [hintsUsed, setHintsUsed] = useState(0);
   const [skipsUsed, setSkipsUsed] = useState(0);
   const [showHint, setShowHint] = useState(false);
@@ -206,7 +206,7 @@ const GameLevel: React.FC<GameLevelProps> = ({ gameProgress, onProgressUpdate })
               setSelectedAnswer(null);
               setShowResult(false);
               setScore(0);
-              setTimeLeft(60);
+              setTimeLeft(120);
               setHintsUsed(0);
               setSkipsUsed(0);
               setShowHint(false);
