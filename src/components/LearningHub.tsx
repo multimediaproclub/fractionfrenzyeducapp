@@ -180,23 +180,34 @@ const LearningHub: React.FC = () => {
                             <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/4 + 2/4</h4>
                             <div className="flex items-center justify-center space-x-2 text-xs">
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-400"></div>
                                 </div>
                                 <span className="mt-1 text-blue-600 font-semibold">1/4</span>
                               </div>
                               <span className="text-gray-600">+</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
-                                  <div className="absolute top-0 right-0 w-4 h-8 bg-blue-400 rounded-r-full"></div>
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-400"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-blue-400"></div>
                                 </div>
                                 <span className="mt-1 text-blue-600 font-semibold">2/4</span>
                               </div>
                               <span className="text-gray-600">=</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-6 h-8 bg-green-400 rounded-l-full"></div>
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-green-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-green-400"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-green-400"></div>
+                                  <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-green-400"></div>
                                 </div>
                                 <span className="mt-1 text-green-600 font-semibold">3/4</span>
                               </div>
@@ -209,22 +220,31 @@ const LearningHub: React.FC = () => {
                             <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/2 + 1/4</h4>
                             <div className="flex items-center justify-center space-x-2 text-xs">
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-full border-r border-blue-300"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-full bg-blue-400"></div>
                                 </div>
                                 <span className="mt-1 text-blue-600 font-semibold">1/2</span>
                               </div>
                               <span className="text-gray-600">+</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-2 h-8 bg-blue-400" style={{clipPath: 'polygon(0 0, 100% 0, 50% 100%, 0 100%)'}}></div>
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-blue-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-400"></div>
                                 </div>
                                 <span className="mt-1 text-blue-600 font-semibold">1/4</span>
                               </div>
                               <span className="text-gray-600">=</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-6 h-8 bg-green-400" style={{clipPath: 'polygon(0 0, 100% 0, 75% 100%, 0 100%)'}}></div>
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-green-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-green-400"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-green-400"></div>
+                                  <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-green-400"></div>
                                 </div>
                                 <span className="mt-1 text-green-600 font-semibold">3/4</span>
                               </div>
@@ -238,22 +258,34 @@ const LearningHub: React.FC = () => {
                             <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 3/4 - 1/4</h4>
                             <div className="flex items-center justify-center space-x-2 text-xs">
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-6 h-8 bg-red-400" style={{clipPath: 'polygon(0 0, 100% 0, 75% 100%, 0 100%)'}}></div>
+                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-red-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-red-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-red-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-red-400"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-red-400"></div>
+                                  <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-red-400"></div>
                                 </div>
                                 <span className="mt-1 text-red-600 font-semibold">3/4</span>
                               </div>
                               <span className="text-gray-600">-</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-2 h-8 bg-red-400" style={{clipPath: 'polygon(0 0, 100% 0, 50% 100%, 0 100%)'}}></div>
+                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-red-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-red-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-red-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-red-400"></div>
                                 </div>
                                 <span className="mt-1 text-red-600 font-semibold">1/4</span>
                               </div>
                               <span className="text-gray-600">=</span>
                               <div className="flex flex-col items-center">
-                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
-                                  <div className="absolute top-0 left-0 w-4 h-8 bg-green-400 rounded-l-full"></div>
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative overflow-hidden">
+                                  <div className="absolute top-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute bottom-0 left-0 w-full h-1/2 border-r border-green-300"></div>
+                                  <div className="absolute top-0 right-0 w-1/2 h-full border-b border-green-300"></div>
+                                  <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-green-400"></div>
+                                  <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-green-400"></div>
                                 </div>
                                 <span className="mt-1 text-green-600 font-semibold">2/4 = 1/2</span>
                               </div>
