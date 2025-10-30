@@ -79,11 +79,11 @@ const LessonView: React.FC = () => {
                   <div className="flex items-center">
                     <span className="text-2xl font-bold text-gray-600">+</span>
                   </div>
-                  <FractionVisual numerator={1} denominator={4} size={80} />
+                  <FractionVisual numerator={2} denominator={4} size={80} />
                   <div className="flex items-center">
                     <span className="text-2xl font-bold text-gray-600">=</span>
                   </div>
-                  <FractionVisual numerator={2} denominator={4} size={80} />
+                  <FractionVisual numerator={3} denominator={4} size={80} />
                 </div>
               )}
               
