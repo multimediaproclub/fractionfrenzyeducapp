@@ -79,6 +79,7 @@ const PreTest: React.FC<PreTestProps> = ({ onTestComplete }) => {
             )}
             
             <h2 className="text-3xl font-bold mb-2">Pre-Test Complete!</h2>
+            <h2 className="text-3xl font-bold mb-2">Pretest Complete!</h2>
             <p className="text-gray-600 mb-4">
               You scored {score} out of 20 questions correctly ({Math.round((score/20)*100)}%)
             </p>
@@ -155,7 +156,7 @@ const PreTest: React.FC<PreTestProps> = ({ onTestComplete }) => {
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Pre-Test Assessment</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Pretest Assessment</h1>
             <p className="text-gray-600">Test your current knowledge of fractions</p>
           </div>
           <div className="flex items-center space-x-4">

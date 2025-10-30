@@ -173,6 +173,129 @@ const LearningHub: React.FC = () => {
                             Practice Game
                           </Link>
                         </div>
+                        
+                        {/* Example Diagram */}
+                        {topic.id === 'addition-similar' && (
+                          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/4 + 2/4</h4>
+                            <div className="flex items-center justify-center space-x-2 text-xs">
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
+                                </div>
+                                <span className="mt-1 text-blue-600 font-semibold">1/4</span>
+                              </div>
+                              <span className="text-gray-600">+</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
+                                  <div className="absolute top-0 right-0 w-4 h-8 bg-blue-400 rounded-r-full"></div>
+                                </div>
+                                <span className="mt-1 text-blue-600 font-semibold">2/4</span>
+                              </div>
+                              <span className="text-gray-600">=</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-6 h-8 bg-green-400 rounded-l-full"></div>
+                                </div>
+                                <span className="mt-1 text-green-600 font-semibold">3/4</span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {topic.id === 'addition-dissimilar' && (
+                          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/2 + 1/4</h4>
+                            <div className="flex items-center justify-center space-x-2 text-xs">
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-4 h-8 bg-blue-400 rounded-l-full"></div>
+                                </div>
+                                <span className="mt-1 text-blue-600 font-semibold">1/2</span>
+                              </div>
+                              <span className="text-gray-600">+</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-blue-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-2 h-8 bg-blue-400" style={{clipPath: 'polygon(0 0, 100% 0, 50% 100%, 0 100%)'}}></div>
+                                </div>
+                                <span className="mt-1 text-blue-600 font-semibold">1/4</span>
+                              </div>
+                              <span className="text-gray-600">=</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-6 h-8 bg-green-400" style={{clipPath: 'polygon(0 0, 100% 0, 75% 100%, 0 100%)'}}></div>
+                                </div>
+                                <span className="mt-1 text-green-600 font-semibold">3/4</span>
+                              </div>
+                            </div>
+                            <p className="text-xs text-gray-600 mt-2">Convert 1/2 to 2/4, then add: 2/4 + 1/4 = 3/4</p>
+                          </div>
+                        )}
+                        
+                        {topic.id === 'subtraction-similar' && (
+                          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 3/4 - 1/4</h4>
+                            <div className="flex items-center justify-center space-x-2 text-xs">
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-6 h-8 bg-red-400" style={{clipPath: 'polygon(0 0, 100% 0, 75% 100%, 0 100%)'}}></div>
+                                </div>
+                                <span className="mt-1 text-red-600 font-semibold">3/4</span>
+                              </div>
+                              <span className="text-gray-600">-</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-red-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-2 h-8 bg-red-400" style={{clipPath: 'polygon(0 0, 100% 0, 50% 100%, 0 100%)'}}></div>
+                                </div>
+                                <span className="mt-1 text-red-600 font-semibold">1/4</span>
+                              </div>
+                              <span className="text-gray-600">=</span>
+                              <div className="flex flex-col items-center">
+                                <div className="w-8 h-8 border-2 border-green-300 rounded-full relative">
+                                  <div className="absolute top-0 left-0 w-4 h-8 bg-green-400 rounded-l-full"></div>
+                                </div>
+                                <span className="mt-1 text-green-600 font-semibold">2/4 = 1/2</span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {topic.id === 'multiplication-proper' && (
+                          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/2 × 1/3</h4>
+                            <div className="text-center text-xs">
+                              <div className="mb-2">
+                                <span className="text-purple-600 font-semibold">1 × 1 = 1</span>
+                                <span className="text-gray-600 mx-2">(multiply numerators)</span>
+                              </div>
+                              <div className="mb-2">
+                                <span className="text-purple-600 font-semibold">2 × 3 = 6</span>
+                                <span className="text-gray-600 mx-2">(multiply denominators)</span>
+                              </div>
+                              <div className="text-green-600 font-semibold">Result: 1/6</div>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {topic.id === 'division-fractions' && (
+                          <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <h4 className="text-xs font-semibold text-gray-700 mb-2">Example: 1/2 ÷ 1/4</h4>
+                            <div className="text-center text-xs">
+                              <div className="mb-2">
+                                <span className="text-orange-600 font-semibold">1/2 × 4/1</span>
+                                <span className="text-gray-600 mx-2">(multiply by reciprocal)</span>
+                              </div>
+                              <div className="mb-2">
+                                <span className="text-orange-600 font-semibold">1 × 4 = 4</span>
+                              </div>
+                              <div className="mb-2">
+                                <span className="text-orange-600 font-semibold">2 × 1 = 2</span>
+                              </div>
+                              <div className="text-green-600 font-semibold">Result: 4/2 = 2</div>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

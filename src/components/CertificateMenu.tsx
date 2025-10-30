@@ -36,7 +36,7 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
     if (gameProgress.preTestCompleted) {
       certificates.push({
         id: 'pre-test',
-        title: 'Pre-Test Assessment Certificate',
+        title: 'Pretest Assessment Certificate',
         type: 'pre-test',
         earnedDate: new Date().toISOString(), // In real app, this would be stored
         description: 'Successfully completed the initial assessment',
@@ -79,7 +79,7 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
       
       certificates.push({
         id: 'post-test',
-        title: 'Post-Test Achievement Certificate',
+        title: 'Posttest Achievement Certificate',
         type: 'post-test',
         earnedDate: new Date().toISOString(),
         description: 'Demonstrated mastery of fraction operations',
@@ -98,10 +98,10 @@ const CertificateMenu: React.FC<CertificateMenuProps> = ({ userProfile, gameProg
     if (completedLevels === 9 && gameProgress.postTestCompleted) {
       certificates.push({
         id: 'completion',
-        title: 'FractionMaster Course Completion Certificate',
+        title: 'Fraction Master Course Completion Certificate',
         type: 'completion',
         earnedDate: new Date().toISOString(),
-        description: 'Successfully completed the entire FractionMaster course',
+        description: 'Successfully completed the entire Fraction Master course',
         icon: <Target className="text-purple-500" size={24} />,
         stats: {
           score: gameProgress.postTestScore,

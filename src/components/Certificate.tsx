@@ -16,22 +16,22 @@ const Certificate: React.FC<CertificateProps> = ({ userProfile }) => {
   const getCertificateTitle = () => {
     switch (type) {
       case 'pre-test':
-        return 'Pre-Test Completion Certificate';
+        return 'Pretest Completion Certificate';
       case 'post-test':
-        return 'Post-Test Achievement Certificate';
+        return 'Posttest Achievement Certificate';
       case 'level':
         return 'Level Mastery Certificate';
       default:
-        return 'FractionMaster Certificate';
+        return 'Fraction Master Certificate';
     }
   };
 
   const getCertificateDescription = () => {
     switch (type) {
       case 'pre-test':
-        return 'for successfully completing the Pre-Test Assessment and demonstrating readiness to learn fraction operations';
+        return 'for successfully completing the Pretest Assessment and demonstrating readiness to learn fraction operations';
       case 'post-test':
-        return 'for successfully completing the Post-Test Assessment and demonstrating mastery of fraction operations';
+        return 'for successfully completing the Posttest Assessment and demonstrating mastery of fraction operations';
       case 'level':
         return 'for demonstrating excellence in fraction operations through comprehensive learning and practice';
       default:
@@ -105,7 +105,7 @@ const Certificate: React.FC<CertificateProps> = ({ userProfile }) => {
               <Award className="text-white" size={40} />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-blue-900 mb-2">FractionMaster</h1>
+          <h1 className="text-4xl font-bold text-blue-900 mb-2">Fraction Master</h1>
           <h2 className="text-2xl font-semibold text-gray-700">{getCertificateTitle()}</h2>
         </div>
 

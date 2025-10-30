@@ -59,7 +59,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, gameProgress }) => {
       {/* Quick Actions */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link
-          to="/pre-test"
+          to="/pretest"
           className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-green-500"
         >
           <div className="flex items-center space-x-4">
@@ -112,7 +112,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, gameProgress }) => {
           </div>
         </Link>
         <Link
-          to="/post-test"
+          to="/posttest"
           className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-l-4 border-purple-500"
         >
           <div className="flex items-center space-x-4">
@@ -120,7 +120,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userProfile, gameProgress }) => {
               <Award className="text-purple-600" size={24} />
             </div>
             <div>
-              <h3 className="font-bold text-gray-800">Post-Test</h3>
+              <h3 className="font-bold text-gray-800">Posttest</h3>
               <p className="text-gray-600 text-sm">Show what you've learned</p>
               {gameProgress.postTestCompleted && (
                 <p className="text-purple-600 text-sm font-semibold">Score: {gameProgress.postTestScore}/20</p>

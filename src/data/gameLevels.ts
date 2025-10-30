@@ -49,9 +49,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'add-sim-5',
         question: 'What is 2/9 + 4/9?',
-        options: ['6/9', '2/3', '6/18', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Add the numerators: 2 + 4 = 6, keep the denominator: 6/9 = 2/3 (simplified)',
+        options: ['6/9', '2/3', '6/18', '4/9'],
+        correctAnswer: 1,
+        explanation: 'Add the numerators: 2 + 4 = 6, keep the denominator: 6/9, which simplifies to 2/3',
         difficulty: 'medium',
         visualFraction: { numerator: 6, denominator: 9 }
       }
@@ -96,7 +96,7 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'add-dis-4',
         question: 'What is 1/5 + 2/10?',
-        options: ['3/15', '2/5', '4/10', '3/10'],
+        options: ['3/15', '2/5', '3/10', '1/10'],
         correctAnswer: 1,
         explanation: 'Common denominator is 10: 1/5 = 2/10, then 2/10 + 2/10 = 4/10 = 2/5',
         difficulty: 'medium',
@@ -125,7 +125,7 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'add-mix-1',
         question: 'What is 1 1/2 + 2 1/4?',
-        options: ['3 3/4', '3 1/2', '4 1/4', '3 2/6'],
+        options: ['3 3/4', '3 1/2', '4 1/4', '3 1/3'],
         correctAnswer: 0,
         explanation: 'Add whole numbers: 1 + 2 = 3. Add fractions: 1/2 + 1/4 = 2/4 + 1/4 = 3/4. Result: 3 3/4',
         difficulty: 'medium',
@@ -181,16 +181,16 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-sim-1',
         question: 'What is 3/4 - 1/4?',
-        options: ['2/4', '1/2', '2/0', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Subtract numerators: 3 - 1 = 2, keep denominator: 2/4 = 1/2 (simplified)',
+        options: ['2/4', '1/2', '1/4', '3/4'],
+        correctAnswer: 1,
+        explanation: 'Subtract numerators: 3 - 1 = 2, keep denominator: 2/4, which simplifies to 1/2',
         difficulty: 'easy',
         visualFraction: { numerator: 2, denominator: 4 }
       },
       {
         id: 'sub-sim-2',
         question: 'What is 4/5 - 2/5?',
-        options: ['2/5', '2/0', '6/5', '2/10'],
+        options: ['2/5', '1/5', '6/5', '2/10'],
         correctAnswer: 0,
         explanation: 'Subtract numerators: 4 - 2 = 2, keep denominator: 2/5',
         difficulty: 'easy',
@@ -199,27 +199,27 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-sim-3',
         question: 'What is 5/8 - 3/8?',
-        options: ['2/8', '1/4', '2/0', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Subtract numerators: 5 - 3 = 2, keep denominator: 2/8 = 1/4 (simplified)',
+        options: ['2/8', '1/4', '3/8', '5/8'],
+        correctAnswer: 1,
+        explanation: 'Subtract numerators: 5 - 3 = 2, keep denominator: 2/8, which simplifies to 1/4',
         difficulty: 'medium',
         visualFraction: { numerator: 2, denominator: 8 }
       },
       {
         id: 'sub-sim-4',
         question: 'What is 7/9 - 4/9?',
-        options: ['3/9', '1/3', '3/0', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Subtract numerators: 7 - 4 = 3, keep denominator: 3/9 = 1/3 (simplified)',
+        options: ['3/9', '1/3', '4/9', '7/9'],
+        correctAnswer: 1,
+        explanation: 'Subtract numerators: 7 - 4 = 3, keep denominator: 3/9, which simplifies to 1/3',
         difficulty: 'medium',
         visualFraction: { numerator: 3, denominator: 9 }
       },
       {
         id: 'sub-sim-5',
         question: 'What is 6/10 - 2/10?',
-        options: ['4/10', '2/5', '4/0', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Subtract numerators: 6 - 2 = 4, keep denominator: 4/10 = 2/5 (simplified)',
+        options: ['4/10', '2/5', '3/5', '1/5'],
+        correctAnswer: 1,
+        explanation: 'Subtract numerators: 6 - 2 = 4, keep denominator: 4/10, which simplifies to 2/5',
         difficulty: 'medium',
         visualFraction: { numerator: 4, denominator: 10 }
       }
@@ -246,9 +246,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-dis-2',
         question: 'What is 2/3 - 1/6?',
-        options: ['3/6', '1/2', '1/3', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Common denominator is 6: 2/3 = 4/6, then 4/6 - 1/6 = 3/6 = 1/2',
+        options: ['3/6', '1/2', '1/3', '2/6'],
+        correctAnswer: 1,
+        explanation: 'Common denominator is 6: 2/3 = 4/6, then 4/6 - 1/6 = 3/6, which simplifies to 1/2',
         difficulty: 'medium',
         visualFraction: { numerator: 3, denominator: 6 }
       },
@@ -293,9 +293,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-mix-1',
         question: 'What is 3 3/4 - 1 1/4?',
-        options: ['2 2/4', '2 1/2', '2 1/4', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Subtract whole numbers: 3 - 1 = 2. Subtract fractions: 3/4 - 1/4 = 2/4 = 1/2. Result: 2 1/2',
+        options: ['2 2/4', '2 1/2', '2 1/4', '1 1/2'],
+        correctAnswer: 1,
+        explanation: 'Subtract whole numbers: 3 - 1 = 2. Subtract fractions: 3/4 - 1/4 = 2/4, which simplifies to 1/2. Result: 2 1/2',
         difficulty: 'medium',
         visualFraction: { numerator: 5, denominator: 2 }
       },
@@ -311,9 +311,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-mix-3',
         question: 'What is 5 2/3 - 2 1/6?',
-        options: ['3 1/2', '3 3/6', '3 1/6', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Convert to sixths: 5 4/6 - 2 1/6 = 3 3/6 = 3 1/2',
+        options: ['3 1/2', '3 3/6', '3 1/6', '2 1/2'],
+        correctAnswer: 0,
+        explanation: 'Convert to sixths: 5 4/6 - 2 1/6 = 3 3/6, which simplifies to 3 1/2',
         difficulty: 'hard',
         visualFraction: { numerator: 7, denominator: 2 }
       },
@@ -329,9 +329,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'sub-mix-5',
         question: 'What is 4 1/6 - 1 2/3?',
-        options: ['2 1/2', '3 1/6', '2 3/6', 'Both A and C'],
-        correctAnswer: 3,
-        explanation: 'Convert to sixths: 4 1/6 - 1 4/6. Borrow: 3 7/6 - 1 4/6 = 2 3/6 = 2 1/2',
+        options: ['2 1/2', '3 1/6', '2 3/6', '1 1/2'],
+        correctAnswer: 0,
+        explanation: 'Convert to sixths: 4 1/6 - 1 4/6. Borrow: 3 7/6 - 1 4/6 = 2 3/6, which simplifies to 2 1/2',
         difficulty: 'hard',
         visualFraction: { numerator: 5, denominator: 2 }
       }
@@ -358,9 +358,9 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'mul-prop-2',
         question: 'What is 2/3 × 3/4?',
-        options: ['5/7', '6/12', '1/2', 'Both B and C'],
-        correctAnswer: 3,
-        explanation: 'Multiply: 2×3 = 6, 3×4 = 12. Result: 6/12 = 1/2 (simplified)',
+        options: ['5/7', '6/12', '1/2', '2/7'],
+        correctAnswer: 2,
+        explanation: 'Multiply: 2×3 = 6, 3×4 = 12. Result: 6/12, which simplifies to 1/2',
         difficulty: 'medium',
         visualFraction: { numerator: 6, denominator: 12 }
       },
@@ -376,18 +376,18 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'mul-prop-4',
         question: 'What is 4/9 × 3/8?',
-        options: ['12/72', '1/6', '7/17', 'Both A and B'],
-        correctAnswer: 3,
-        explanation: 'Multiply: 4×3 = 12, 9×8 = 72. Result: 12/72 = 1/6 (simplified)',
+        options: ['12/72', '1/6', '7/17', '3/8'],
+        correctAnswer: 1,
+        explanation: 'Multiply: 4×3 = 12, 9×8 = 72. Result: 12/72, which simplifies to 1/6',
         difficulty: 'hard',
         visualFraction: { numerator: 12, denominator: 72 }
       },
       {
         id: 'mul-prop-5',
         question: 'What is 5/6 × 2/5?',
-        options: ['7/11', '10/30', '1/3', 'Both B and C'],
-        correctAnswer: 3,
-        explanation: 'Multiply: 5×2 = 10, 6×5 = 30. Result: 10/30 = 1/3 (simplified)',
+        options: ['7/11', '10/30', '1/3', '2/6'],
+        correctAnswer: 2,
+        explanation: 'Multiply: 5×2 = 10, 6×5 = 30. Result: 10/30, which simplifies to 1/3',
         difficulty: 'medium',
         visualFraction: { numerator: 10, denominator: 30 }
       }
@@ -414,8 +414,8 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'mul-mix-2',
         question: 'What is 1 1/2 × 2?',
-        options: ['2 1/2', '3', '2 2/2', 'Both B and C'],
-        correctAnswer: 3,
+        options: ['2 1/2', '3', '2 2/2', '4'],
+        correctAnswer: 1,
         explanation: 'Convert to improper fraction: 1 1/2 = 3/2. Then 3/2 × 2 = 6/2 = 3',
         difficulty: 'medium',
         visualFraction: { numerator: 3, denominator: 1 }
@@ -423,17 +423,17 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'mul-mix-3',
         question: 'What is 1 1/4 × 2/3?',
-        options: ['5/6', '2 2/12', '10/12', 'Both A and C'],
-        correctAnswer: 3,
-        explanation: 'Convert: 1 1/4 = 5/4. Multiply: 5/4 × 2/3 = 10/12 = 5/6',
+        options: ['5/6', '2 2/12', '10/12', '1/3'],
+        correctAnswer: 0,
+        explanation: 'Convert: 1 1/4 = 5/4. Multiply: 5/4 × 2/3 = 10/12, which simplifies to 5/6',
         difficulty: 'hard',
         visualFraction: { numerator: 10, denominator: 12 }
       },
       {
         id: 'mul-mix-4',
         question: 'What is 2 1/3 × 1 1/2?',
-        options: ['3 1/2', '7/2', '3 3/6', 'All of the above'],
-        correctAnswer: 3,
+        options: ['3 1/2', '7/2', '3 3/6', '4 1/2'],
+        correctAnswer: 0,
         explanation: 'Convert: 2 1/3 = 7/3, 1 1/2 = 3/2. Multiply: 7/3 × 3/2 = 21/6 = 7/2 = 3 1/2',
         difficulty: 'hard',
         visualFraction: { numerator: 21, denominator: 6 }
@@ -441,8 +441,8 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'mul-mix-5',
         question: 'What is 3 × 2 2/5?',
-        options: ['6 6/5', '7 1/5', '36/5', 'Both B and C'],
-        correctAnswer: 3,
+        options: ['6 6/5', '7 1/5', '36/5', '8 1/5'],
+        correctAnswer: 1,
         explanation: 'Convert: 2 2/5 = 12/5. Multiply: 3 × 12/5 = 36/5 = 7 1/5',
         difficulty: 'medium',
         visualFraction: { numerator: 36, denominator: 5 }
@@ -470,8 +470,8 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'div-frac-2',
         question: 'What is 3/4 ÷ 1/2?',
-        options: ['3/8', '3/2', '1 1/2', 'Both B and C'],
-        correctAnswer: 3,
+        options: ['3/8', '3/2', '1 1/2', '2/3'],
+        correctAnswer: 2,
         explanation: 'Multiply by reciprocal: 3/4 × 2/1 = 6/4 = 3/2 = 1 1/2',
         difficulty: 'medium',
         visualFraction: { numerator: 3, denominator: 2 }
@@ -488,8 +488,8 @@ export const gameLevels: GameLevel[] = [
       {
         id: 'div-frac-4',
         question: 'What is 5/6 ÷ 2/3?',
-        options: ['10/18', '5/4', '1 1/4', 'Both B and C'],
-        correctAnswer: 3,
+        options: ['10/18', '5/4', '1 1/4', '3/4'],
+        correctAnswer: 2,
         explanation: 'Multiply by reciprocal: 5/6 × 3/2 = 15/12 = 5/4 = 1 1/4',
         difficulty: 'hard',
         visualFraction: { numerator: 5, denominator: 4 }

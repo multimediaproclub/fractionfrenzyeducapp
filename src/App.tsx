@@ -114,7 +114,7 @@ function App() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+            <h1 className="text-2xl font-bold text-blue-900 mb-2">Fraction Master</h1>
             <span className="text-white font-bold text-2xl">F</span>
           </div>
           <h1 className="text-2xl font-bold text-blue-900 mb-2">FractionMaster</h1>
@@ -178,7 +178,7 @@ function App() {
               element={<LessonView />} 
             />
             <Route 
-              path="/pre-test" 
+              path="/pretest" 
               element={
                 <PreTest 
                   onTestComplete={(score) =>
@@ -193,7 +193,7 @@ function App() {
               } 
             />
             <Route 
-              path="/post-test" 
+              path="/posttest" 
               element={
                 <PostTest 
                   onTestComplete={(score) =>

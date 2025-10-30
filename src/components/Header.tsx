@@ -14,9 +14,9 @@ const Header: React.FC<HeaderProps> = ({ userProfile, onLogout }) => {
 
   const navItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
-    { path: '/pre-test', icon: BookOpen, label: 'Pre-Test' },
+    { path: '/pretest', icon: BookOpen, label: 'Pretest' },
     { path: '/learning', icon: GraduationCap, label: 'Learning Hub' },
-    { path: '/post-test', icon: Award, label: 'Post-Test' },
+    { path: '/posttest', icon: Award, label: 'Posttest' },
     { path: '/progress', icon: BarChart3, label: 'Progress' },
     { path: '/certificates', icon: FileText, label: 'Certificates' }
   ];
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ userProfile, onLogout }) => {
               <span className="text-white font-bold text-lg">F</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-blue-900">FractionMaster</h1>
+              <h1 className="text-xl font-bold text-blue-900">Fraction Master</h1>
               <p className="text-xs text-blue-600">Interactive Learning Platform</p>
             </div>
           </Link>

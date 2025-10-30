@@ -265,10 +265,10 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ userProfile, gameProgress
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className={`p-4 rounded-lg border-2 ${gameProgress.preTestCompleted ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'}`}>
             <h3 className={`font-semibold ${gameProgress.preTestCompleted ? 'text-green-800' : 'text-gray-600'}`}>
-              Pre-Test Warrior
+              Pretest Warrior
             </h3>
             <p className={`text-sm ${gameProgress.preTestCompleted ? 'text-green-600' : 'text-gray-500'}`}>
-              Complete the pre-test assessment
+              Complete the pretest assessment
             </p>
           </div>
 
@@ -301,10 +301,10 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ userProfile, gameProgress
 
           <div className={`p-4 rounded-lg border-2 ${gameProgress.postTestCompleted ? 'border-green-300 bg-green-50' : 'border-gray-200 bg-gray-50'}`}>
             <h3 className={`font-semibold ${gameProgress.postTestCompleted ? 'text-green-800' : 'text-gray-600'}`}>
-              Test Champion
+              Posttest Champion
             </h3>
             <p className={`text-sm ${gameProgress.postTestCompleted ? 'text-green-600' : 'text-gray-500'}`}>
-              Complete the post-test assessment
+              Complete the posttest assessment
             </p>
           </div>
 

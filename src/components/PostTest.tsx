@@ -73,6 +73,7 @@ const PostTest: React.FC<PostTestProps> = ({ onTestComplete }) => {
             <Award className="mx-auto text-blue-500 mb-4" size={64} />
             
             <h2 className="text-3xl font-bold mb-2">Post-Test Complete!</h2>
+            <h2 className="text-3xl font-bold mb-2">Posttest Complete!</h2>
             <p className="text-gray-600 mb-4">
               You scored {score} out of 20 questions correctly ({Math.round((score/20)*100)}%)
             </p>
@@ -156,7 +157,7 @@ const PostTest: React.FC<PostTestProps> = ({ onTestComplete }) => {
       <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Post-Test Assessment</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Posttest Assessment</h1>
             <p className="text-gray-600">Show what you've learned about fractions</p>
           </div>
           <div className="flex items-center space-x-4">

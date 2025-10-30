@@ -1,6 +1,6 @@
 {
-  "name": "FractionMaster - Interactive Learning Platform",
-  "short_name": "FractionMaster",
+  "name": "Fraction Master - Interactive Learning Platform",
+  "short_name": "Fraction Master",
   "description": "Complete educational platform for learning fraction operations with interactive games, lessons, and assessments",
   "start_url": "/",
   "display": "standalone",
